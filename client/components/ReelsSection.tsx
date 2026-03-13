@@ -1,85 +1,77 @@
-import { Eye, Heart, Share2, Calendar } from "lucide-react";
+import { Eye, Heart, Share2, Calendar, X } from "lucide-react";
 import { useState } from "react";
 
 interface Reel {
   id: string;
   title: string;
   description: string;
-  thumbnail: string;
-  videoUrl?: string;
+  videoUrl: string;
   views: number;
   likes: number;
   shares: number;
   date: string;
-  category?: string;
 }
 
 const SAMPLE_REELS: Reel[] = [
   {
     id: "1",
-    title: "Reel 1 – Viaje a París",
-    description: "Un viaje mágico a la ciudad de la luz",
-    thumbnail: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=500&fit=crop",
+    title: "Tutorial Saludable",
+    description: "Desayuno proteico en 5 minutos",
+    videoUrl: "https://media.giphy.com/media/l0HlUaQ6WyZf0XO1i/giphy.mp4",
     views: 245000,
     likes: 18500,
     shares: 3200,
     date: "2024-01-15",
-    category: "Viajes",
   },
   {
     id: "2",
-    title: "Reel 2 – Tutorial Maquillaje",
-    description: "Maquillaje de noche en 5 minutos",
-    thumbnail: "https://images.unsplash.com/photo-1487412992651-9e8c0907a14b?w=400&h=500&fit=crop",
+    title: "Receta Rápida",
+    description: "Bowl saludable con 3 ingredientes",
+    videoUrl: "https://media.giphy.com/media/l3q2K6YNbCRSwzvpS/giphy.mp4",
     views: 512000,
     likes: 42300,
     shares: 7800,
     date: "2024-01-12",
-    category: "Beauty",
   },
   {
     id: "3",
-    title: "Reel 3 – Challenge Viral",
-    description: "Únete al challenge más viral del momento",
-    thumbnail: "https://images.unsplash.com/photo-1522869635100-82f4e9c40801?w=400&h=500&fit=crop",
+    title: "Tips Nutrición",
+    description: "10 alimentos imprescindibles en tu despensa",
+    videoUrl: "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.mp4",
     views: 890000,
     likes: 65200,
     shares: 12100,
     date: "2024-01-10",
-    category: "Trends",
   },
   {
     id: "4",
-    title: "Reel 4 – Día en la playa",
-    description: "Mis mejores momentos de verano",
-    thumbnail: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=500&fit=crop",
+    title: "Snacks Saludables",
+    description: "Opciones bajas en calorías",
+    videoUrl: "https://media.giphy.com/media/l3q2KcFGrFyTQKIhO/giphy.mp4",
     views: 345000,
     likes: 28900,
     shares: 4500,
     date: "2024-01-08",
-    category: "Viajes",
   },
   {
     id: "5",
-    title: "Reel 5 – Receta Rápida",
-    description: "Receta vegana lista en 15 minutos",
-    thumbnail: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=400&h=500&fit=crop",
+    title: "Hidratación Correcta",
+    description: "¿Cuánta agua realmente necesitas?",
+    videoUrl: "https://media.giphy.com/media/l0HlNaQ9NcI7l0XO8/giphy.mp4",
     views: 178000,
     likes: 14200,
     shares: 2100,
     date: "2024-01-05",
-    category: "Comida",
   },
   {
     id: "6",
-    title: "Reel 6 – Tips de Fitness",
-    description: "Rutina matinal de 10 minutos",
-    thumbnail: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=500&fit=crop",
+    title: "Ejercicio en Casa",
+    description: "Rutina de 10 minutos sin equipo",
+    videoUrl: "https://media.giphy.com/media/l3q2K5jW8SAkQwLDG/giphy.mp4",
     views: 421000,
     likes: 32100,
     shares: 5900,
     date: "2024-01-02",
-    category: "Fitness",
   },
 ];
 
@@ -89,12 +81,8 @@ interface ReelsSectionProps {
 
 export default function ReelsSection({ onReelClick }: ReelsSectionProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  const categories = Array.from(new Set(SAMPLE_REELS.map((r) => r.category)));
-  const filteredReels = selectedCategory
-    ? SAMPLE_REELS.filter((r) => r.category === selectedCategory)
-    : SAMPLE_REELS;
+  const [selectedReel, setSelectedReel] = useState<Reel | null>(null);
+  const [videoRefs, setVideoRefs] = useState<Record<string, HTMLVideoElement | null>>({});
 
   const formatNumber = (num: number) => {
     if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
@@ -110,6 +98,25 @@ export default function ReelsSection({ onReelClick }: ReelsSectionProps) {
     });
   };
 
+  const handleReelHover = (reelId: string) => {
+    setHoveredId(reelId);
+    const video = videoRefs[reelId];
+    if (video) {
+      video.play().catch(() => {
+        // Handle autoplay restrictions
+      });
+    }
+  };
+
+  const handleReelLeave = (reelId: string) => {
+    setHoveredId(null);
+    const video = videoRefs[reelId];
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  };
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,57 +126,37 @@ export default function ReelsSection({ onReelClick }: ReelsSectionProps) {
             <span className="text-gradient">Mis Reels</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Explora mi contenido más impactante y viral
+            Contenido que inspira, educa y transforma
           </p>
-        </div>
-
-        {/* Category Filter */}
-        <div className="flex flex-wrap gap-3 justify-center mb-12 animate-slide-up">
-          <button
-            onClick={() => setSelectedCategory(null)}
-            className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-              selectedCategory === null
-                ? "bg-gradient-to-r from-pink-500 to-coral-400 text-white shadow-lg"
-                : "bg-beige-100 text-slate-700 hover:bg-beige-200"
-            }`}
-          >
-            Todos
-          </button>
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? "bg-gradient-to-r from-pink-500 to-coral-400 text-white shadow-lg"
-                  : "bg-beige-100 text-slate-700 hover:bg-beige-200"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
         </div>
 
         {/* Reels Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredReels.map((reel, index) => (
+          {SAMPLE_REELS.map((reel, index) => (
             <div
               key={reel.id}
               className="animate-slide-up"
               style={{ animationDelay: `${index * 0.1}s` }}
-              onMouseEnter={() => setHoveredId(reel.id)}
-              onMouseLeave={() => setHoveredId(null)}
+              onMouseEnter={() => handleReelHover(reel.id)}
+              onMouseLeave={() => handleReelLeave(reel.id)}
             >
               <button
-                onClick={() => onReelClick?.(reel)}
+                onClick={() => {
+                  setSelectedReel(reel);
+                  onReelClick?.(reel);
+                }}
                 className="w-full text-left group"
               >
                 <div className="relative overflow-hidden rounded-2xl aspect-[9/16] bg-slate-100 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-pink-200/50 hover:-translate-y-2">
-                  {/* Thumbnail */}
-                  <img
-                    src={reel.thumbnail}
-                    alt={reel.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  {/* Video */}
+                  <video
+                    ref={(el) => {
+                      if (el) setVideoRefs((prev) => ({ ...prev, [reel.id]: el }));
+                    }}
+                    src={reel.videoUrl}
+                    className="w-full h-full object-cover"
+                    muted
+                    loop
                   />
 
                   {/* Dark overlay */}
@@ -231,6 +218,37 @@ export default function ReelsSection({ onReelClick }: ReelsSectionProps) {
           ))}
         </div>
       </div>
+
+      {/* Fullscreen Modal */}
+      {selectedReel && (
+        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div className="relative max-w-2xl w-full max-h-[90vh]">
+            <button
+              onClick={() => setSelectedReel(null)}
+              className="absolute -top-12 right-0 text-white hover:text-pink-400 transition-colors z-10"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            
+            <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black">
+              <video
+                src={selectedReel.videoUrl}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                controls
+              />
+            </div>
+
+            <div className="mt-6 text-white space-y-2">
+              <h3 className="text-2xl font-bold">{selectedReel.title}</h3>
+              <p className="text-gray-300">{selectedReel.description}</p>
+              <p className="text-sm text-gray-400">{formatDate(selectedReel.date)}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

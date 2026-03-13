@@ -25,11 +25,11 @@ export default function Footer({ onScrollTop }: FooterProps) {
           {/* Brand Section */}
           <div className="space-y-4">
             <h3 className="text-2xl font-bold">
-              <span className="text-gradient">[Nombre]</span>
+              <span className="text-gradient">Natalia Rodriguez</span>
             </h3>
             <p className="text-gray-300">
-              Creadora de contenido apasionada por conectar con mi audiencia a
-              través de reels, historias y momentos auténticos.
+              Creadora de contenido especializada en nutrición y bienestar.
+              Conectando con mi audiencia a través de reels educativos, recetas saludables y tips de nutrición.
             </p>
             <div className="flex gap-4 pt-4">
               {[
@@ -101,7 +101,7 @@ export default function Footer({ onScrollTop }: FooterProps) {
         {/* Bottom Footer */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-400 text-sm">
           <p>
-            © {new Date().getFullYear()} [Nombre]. Todos los derechos
+            © {new Date().getFullYear()} Natalia Rodriguez. Todos los derechos
             reservados.
           </p>
           <p>Hecho con ❤️ para conectar con mi comunidad</p>
@@ -110,7 +110,7 @@ export default function Footer({ onScrollTop }: FooterProps) {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/1234567890"
+        href="https://wa.me/541123175048"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 hover:-translate-y-2 animate-bounce"

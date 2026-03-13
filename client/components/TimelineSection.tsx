@@ -1,43 +1,76 @@
+import { useState } from "react";
+
 interface TimelineEvent {
   id: string;
   year: number;
   title: string;
   description: string;
-  image?: string;
+  media: string;
+  mediaType: "image" | "video" | "gif";
 }
 
 const TIMELINE_EVENTS: TimelineEvent[] = [
   {
     id: "1",
     year: 2018,
-    title: "Primer Reel Viral",
-    description: "Mi primer video se hizo viral y alcanzó 1M de views en una semana",
-    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=300&h=300&fit=crop",
+    title: "Mi Primer Reel Viral",
+    description: "Compartí mi primer video receta que alcanzó 1M de views",
+    media: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=300&h=300&fit=crop",
+    mediaType: "image",
   },
   {
     id: "2",
     year: 2019,
-    title: "100k Seguidores en Instagram",
-    description: "Alcancé el hito de 100k seguidores gracias a vuestro apoyo",
-    image: "https://images.unsplash.com/photo-1611262588024-d12430b98920?w=300&h=300&fit=crop",
+    title: "100k Seguidores",
+    description: "Alcancé 100k seguidores gracias a vuestra confianza",
+    media: "https://images.unsplash.com/photo-1611262588024-d12430b98920?w=300&h=300&fit=crop",
+    mediaType: "image",
   },
   {
     id: "3",
-    year: 2020,
-    title: "Colaboración con Marca X",
-    description: "Primera colaboración importante con una de las marcas más reconocidas del país",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300&h=300&fit=crop",
+    year: 2021,
+    title: "Lanzamiento de Contenido Premium",
+    description: "Comencé a crear contenido educativo de nutrición certificado",
+    media: "https://media.giphy.com/media/l0HlNaQ9NcI7l0XO8/giphy.mp4",
+    mediaType: "gif",
   },
   {
     id: "4",
     year: 2023,
-    title: "Lanzamiento de Curso Online",
-    description: "Lancé mi curso de creación de contenido con más de 5000 estudiantes",
-    image: "https://images.unsplash.com/photo-1516534775068-bb57928b2edf?w=300&h=300&fit=crop",
+    title: "500k Seguidores",
+    description: "Superé medio millón de seguidores en mis redes",
+    media: "https://images.unsplash.com/photo-1516534775068-bb57928b2edf?w=300&h=300&fit=crop",
+    mediaType: "image",
   },
 ];
 
 export default function TimelineSection() {
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [videoRefs, setVideoRefs] = useState<Record<string, HTMLVideoElement | null>>({});
+
+  const handleMediaHover = (eventId: string, mediaType: string) => {
+    setHoveredId(eventId);
+    if (mediaType !== "image") {
+      const video = videoRefs[eventId];
+      if (video) {
+        video.play().catch(() => {
+          // Handle autoplay restrictions
+        });
+      }
+    }
+  };
+
+  const handleMediaLeave = (eventId: string, mediaType: string) => {
+    setHoveredId(null);
+    if (mediaType !== "image") {
+      const video = videoRefs[eventId];
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    }
+  };
+
   return (
     <section className="py-20 bg-gradient-to-b from-beige-50 to-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,14 +121,40 @@ export default function TimelineSection() {
                   <div className="w-5 h-5 bg-gradient-to-r from-pink-500 to-coral-400 rounded-full ring-4 ring-white shadow-lg" />
                 </div>
 
-                {/* Image */}
-                <div className="flex-1">
-                  <div className="overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300">
-                    <img
-                      src={event.image}
-                      alt={event.title}
-                      className="w-full h-72 object-cover hover:scale-105 transition-transform duration-300"
-                    />
+                {/* Media */}
+                <div className="flex-1 group">
+                  <div
+                    className="overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                    onMouseEnter={() => handleMediaHover(event.id, event.mediaType)}
+                    onMouseLeave={() => handleMediaLeave(event.id, event.mediaType)}
+                  >
+                    {event.mediaType === "image" ? (
+                      <img
+                        src={event.media}
+                        alt={event.title}
+                        className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="relative w-full h-72 bg-slate-100">
+                        <video
+                          ref={(el) => {
+                            if (el) setVideoRefs((prev) => ({ ...prev, [event.id]: el }));
+                          }}
+                          src={event.media}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          muted
+                          loop
+                        />
+                        {/* Play indicator for GIFs/Videos */}
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-300">
+                          {hoveredId !== event.id && (
+                            <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:opacity-0 transition-opacity duration-300">
+                              <div className="w-0 h-0 border-l-4 border-l-white border-t-3 border-t-transparent border-b-3 border-b-transparent ml-0.5" />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

@@ -1,102 +1,46 @@
-import { ExternalLink, Users } from "lucide-react";
+import { ExternalLink, Users, Instagram, MessageCircle, Youtube } from "lucide-react";
 
 interface SocialNetwork {
   id: string;
   name: string;
   handle: string;
   followers: number;
-  icon: string;
+  icon: React.ReactNode;
   url: string;
   color: string;
   bgColor: string;
-  recentPosts: Array<{
-    id: string;
-    image: string;
-    description: string;
-  }>;
 }
 
 const SOCIAL_NETWORKS: SocialNetwork[] = [
   {
     id: "instagram",
     name: "Instagram",
-    handle: "@[NombreIG]",
+    handle: "@nataliarodriguez.fit",
     followers: 320000,
-    icon: "📷",
-    url: "https://instagram.com",
+    icon: <Instagram className="w-8 h-8" />,
+    url: "https://instagram.com/nataliarodriguez.fit",
     color: "from-pink-500 to-orange-400",
     bgColor: "bg-gradient-to-br from-pink-50 to-orange-50",
-    recentPosts: [
-      {
-        id: "1",
-        image: "https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=200&h=200&fit=crop",
-        description: "Viaje a Bali",
-      },
-      {
-        id: "2",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop",
-        description: "Sesión de fotos",
-      },
-      {
-        id: "3",
-        image: "https://images.unsplash.com/photo-1495867881649-86de58701004?w=200&h=200&fit=crop",
-        description: "Evento VIP",
-      },
-    ],
   },
   {
     id: "tiktok",
     name: "TikTok",
-    handle: "@[NombreTik]",
+    handle: "@natalia.fit",
     followers: 450000,
-    icon: "🎵",
-    url: "https://tiktok.com",
+    icon: <MessageCircle className="w-8 h-8" />,
+    url: "https://tiktok.com/@natalia.fit",
     color: "from-black to-slate-600",
     bgColor: "bg-gradient-to-br from-slate-50 to-gray-100",
-    recentPosts: [
-      {
-        id: "1",
-        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=200&h=200&fit=crop",
-        description: "Challenge viral",
-      },
-      {
-        id: "2",
-        image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=200&h=200&fit=crop",
-        description: "Trending sound",
-      },
-      {
-        id: "3",
-        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=200&fit=crop",
-        description: "Coreografía",
-      },
-    ],
   },
   {
     id: "youtube",
     name: "YouTube",
-    handle: "Canal Oficial",
+    handle: "Natalia Fitness",
     followers: 100000,
-    icon: "🎥",
-    url: "https://youtube.com",
+    icon: <Youtube className="w-8 h-8" />,
+    url: "https://youtube.com/@nataliafitness",
     color: "from-red-500 to-red-700",
     bgColor: "bg-gradient-to-br from-red-50 to-orange-50",
-    recentPosts: [
-      {
-        id: "1",
-        image: "https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=200&h=200&fit=crop",
-        description: "Documental",
-      },
-      {
-        id: "2",
-        image: "https://images.unsplash.com/photo-1497206365907-3ff1591cced9?w=200&h=200&fit=crop",
-        description: "Tutorial",
-      },
-      {
-        id: "3",
-        image: "https://images.unsplash.com/photo-1535395891245-ab7cc9cebf35?w=200&h=200&fit=crop",
-        description: "Vlog semanal",
-      },
-    ],
   },
 ];
 
@@ -129,12 +73,14 @@ export default function SocialSection() {
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               <div
-                className={`h-full ${social.bgColor} rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group`}
+                className={`h-full ${social.bgColor} rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group`}
               >
                 {/* Header */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-4">
-                    <span className="text-4xl">{social.icon}</span>
+                    <div className={`p-3 bg-gradient-to-br ${social.color} text-white rounded-xl`}>
+                      {social.icon}
+                    </div>
                     <div>
                       <h3 className="text-2xl font-bold text-slate-900">
                         {social.name}
@@ -145,39 +91,13 @@ export default function SocialSection() {
                 </div>
 
                 {/* Followers */}
-                <div className="flex items-center gap-2 mb-6 p-4 bg-white/50 rounded-xl">
+                <div className="flex items-center gap-2 mb-8 p-4 bg-white/50 rounded-xl">
                   <Users className="w-5 h-5 text-slate-600" />
                   <div>
                     <p className="text-xs text-slate-500">Seguidores</p>
                     <p className="text-lg font-bold text-slate-900">
                       {formatNumber(social.followers)}
                     </p>
-                  </div>
-                </div>
-
-                {/* Recent Posts */}
-                <div className="mb-6">
-                  <p className="text-sm font-semibold text-slate-700 mb-3">
-                    Publicaciones Recientes
-                  </p>
-                  <div className="grid grid-cols-3 gap-2">
-                    {social.recentPosts.map((post) => (
-                      <div
-                        key={post.id}
-                        className="relative group/post overflow-hidden rounded-lg aspect-square bg-slate-200"
-                      >
-                        <img
-                          src={post.image}
-                          alt={post.description}
-                          className="w-full h-full object-cover group-hover/post:scale-110 transition-transform duration-300"
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover/post:bg-black/50 transition-all duration-300 flex items-end p-2">
-                          <p className="text-white text-xs font-semibold opacity-0 group-hover/post:opacity-100 transition-opacity line-clamp-1">
-                            {post.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
                   </div>
                 </div>
 

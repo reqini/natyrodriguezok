@@ -113,7 +113,7 @@ export default function ContactSection() {
 
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/1234567890"
+              href="https://wa.me/541123175048"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-4 p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border-2 border-green-200 hover:border-green-400 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
@@ -123,7 +123,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h4 className="text-lg font-bold text-slate-900">WhatsApp</h4>
-                <p className="text-sm text-slate-600">+34 612 345 678</p>
+                <p className="text-sm text-slate-600">+54 9 11 2317-5048</p>
               </div>
               <div className="ml-auto text-2xl group-hover:translate-x-2 transition-transform">
                 →
@@ -132,7 +132,7 @@ export default function ContactSection() {
 
             {/* Email Button */}
             <a
-              href="mailto:contacto@ejemplo.com"
+              href="mailto:essen.nutricion@gmail.com"
               className="group flex items-center gap-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
             >
               <div className="p-4 bg-gradient-to-br from-blue-400 to-indigo-600 text-white rounded-xl group-hover:shadow-lg transition-all">
@@ -140,7 +140,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h4 className="text-lg font-bold text-slate-900">Email</h4>
-                <p className="text-sm text-slate-600">contacto@ejemplo.com</p>
+                <p className="text-sm text-slate-600">essen.nutricion@gmail.com</p>
               </div>
               <div className="ml-auto text-2xl group-hover:translate-x-2 transition-transform">
                 →

@@ -97,8 +97,7 @@ export default function MetricsSection() {
             <span className="text-gradient">Mis Métricas</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Números que hablan por sí solos: alcance, engagement y crecimiento
-            constante
+            Números que demuestran el impacto de mi contenido educativo sobre nutrición y bienestar
           </p>
         </div>
 

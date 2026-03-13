@@ -21,15 +21,15 @@ export default function Hero({ onViewReels, onContact }: HeroProps) {
           <div className="space-y-4">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
               <span className="block text-gradient">
-                Hola, soy [Nombre],
+                Hola, soy Natalia Rodriguez,
               </span>
               <span className="block text-slate-700 mt-2">
-                hago contenido que conecta
+                creo contenido que conecta y educa
               </span>
             </h1>
-            
+
             <p className="text-xl sm:text-2xl text-slate-600 max-w-2xl mx-auto font-light">
-              Creando Reels que inspiran, entretienen y generan impacto
+              Reels que inspiran, entretienen y generan impacto
             </p>
           </div>
 
