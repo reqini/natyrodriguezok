@@ -63,6 +63,44 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      colors: {
+        pink: {
+          50: "#fdf8f6",
+          100: "#fdeef8",
+          200: "#fbd7ef",
+          300: "#f8acd9",
+          400: "#f582c3",
+          500: "#e86aa8",
+          600: "#d94595",
+          700: "#c02a7f",
+          800: "#a01a69",
+          900: "#7d0e54",
+        },
+        coral: {
+          50: "#fff5f0",
+          100: "#ffe6da",
+          200: "#ffc9b3",
+          300: "#ffaa8c",
+          400: "#ff8b65",
+          500: "#f56c3e",
+          600: "#e64d1f",
+          700: "#d93c0f",
+          800: "#c42a00",
+          900: "#a01c00",
+        },
+        beige: {
+          50: "#fefef9",
+          100: "#fffaf0",
+          200: "#fff3dc",
+          300: "#ffe5c8",
+          400: "#ffd9b0",
+          500: "#f5c896",
+          600: "#e6b877",
+          700: "#d9a058",
+          800: "#c88839",
+          900: "#a86f1f",
+        },
+      },
       keyframes: {
         "accordion-down": {
           from: {
@@ -80,10 +118,41 @@ export default {
             height: "0",
           },
         },
+        "fade-in": {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
+        "slide-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(20px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "slide-left": {
+          "0%": {
+            opacity: "0",
+            transform: "translateX(20px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateX(0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.6s ease-out",
+        "slide-up": "slide-up 0.6s ease-out",
+        "slide-left": "slide-left 0.6s ease-out",
       },
     },
   },
