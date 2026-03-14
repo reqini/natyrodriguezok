@@ -4,6 +4,7 @@ import ReelsSection from "@/components/ReelsSection";
 import TimelineSection from "@/components/TimelineSection";
 import MetricsSection from "@/components/MetricsSection";
 import SocialSection from "@/components/SocialSection";
+import BrandsSection from "@/components/BrandsSection";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -36,6 +37,11 @@ export default function Index() {
       {/* Timeline/About Section */}
       <div id="timeline">
         <TimelineSection />
+      </div>
+
+      {/* BrandsSection */}
+      <div>
+        <BrandsSection />
       </div>
 
       {/* Metrics Section */}

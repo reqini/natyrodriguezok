@@ -1,181 +1,222 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
-interface TimelineEvent {
-  id: string;
-  year: number;
-  title: string;
-  description: string;
-  media: string;
-  mediaType: "image" | "video" | "gif";
-}
-
-const TIMELINE_EVENTS: TimelineEvent[] = [
-  {
-    id: "1",
-    year: 2018,
-    title: "Mi Primer Reel Viral",
-    description: "Compartí mi primer video receta que alcanzó 1M de views",
-    media: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=300&h=300&fit=crop",
-    mediaType: "image",
-  },
-  {
-    id: "2",
-    year: 2019,
-    title: "100k Seguidores",
-    description: "Alcancé 100k seguidores gracias a vuestra confianza",
-    media: "https://images.unsplash.com/photo-1611262588024-d12430b98920?w=300&h=300&fit=crop",
-    mediaType: "image",
-  },
-  {
-    id: "3",
-    year: 2021,
-    title: "Lanzamiento de Contenido Premium",
-    description: "Comencé a crear contenido educativo de nutrición certificado",
-    media: "https://media.giphy.com/media/l0HlNaQ9NcI7l0XO8/giphy.mp4",
-    mediaType: "gif",
-  },
-  {
-    id: "4",
-    year: 2023,
-    title: "500k Seguidores",
-    description: "Superé medio millón de seguidores en mis redes",
-    media: "https://images.unsplash.com/photo-1516534775068-bb57928b2edf?w=300&h=300&fit=crop",
-    mediaType: "image",
-  },
+const fotos = [
+  "/images/foto-familiar-1.jpeg",
+  "/images/foto-familiar-2.jpeg",
+  "/images/foto-familiar-3.jpeg",
+  "/images/foto-familiar-4.jpeg",
+  "/images/foto-familiar-5.jpeg",
+  "/images/foto-familiar-6.jpeg",
 ];
 
-export default function TimelineSection() {
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
-
-  const handleMediaHover = (eventId: string, mediaType: string) => {
-    setHoveredId(eventId);
-    if (mediaType !== "image") {
-      const video = videoRefs.current[eventId];
-      if (video) {
-        video.play().catch(() => {
-          // Handle autoplay restrictions
-        });
-      }
-    }
-  };
-
-  const handleMediaLeave = (eventId: string, mediaType: string) => {
-    setHoveredId(null);
-    if (mediaType !== "image") {
-      const video = videoRefs.current[eventId];
-      if (video) {
-        video.pause();
-        video.currentTime = 0;
-      }
-    }
-  };
+export default function QuienSoySection() {
+  const [active, setActive] = useState(0);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-beige-50 to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-5xl sm:text-6xl font-bold mb-4">
-            <span className="text-gradient">Quién Soy</span>
+    <section className="py-32 bg-gradient-to-b from-white to-rose-50 overflow-hidden">
+
+      <div className="max-w-6xl mx-auto px-6">
+
+        {/* HEADER */}
+
+        <div className="text-center mb-20">
+
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              Quién Soy
+            </span>
           </h2>
+
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Soy Natalia, creadora de contenido apasionada por educar sobre nutrición y bienestar.
-            Mi objetivo es inspirar a miles de personas a través de contenido auténtico y de valor.
+            Detrás de cada receta hay una historia, una familia y una pasión por compartir.
           </p>
+
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Timeline line - hidden on mobile */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-pink-300 via-coral-300 to-beige-400 -translate-x-1/2" />
+        {/* DESKTOP */}
 
-          {/* Timeline events */}
-          <div className="space-y-12">
-            {TIMELINE_EVENTS.map((event, index) => (
-              <div
-                key={event.id}
-                className={`animate-slide-up lg:flex ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } gap-8 items-center`}
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                {/* Content */}
-                <div className="flex-1 lg:text-right" style={
-                  index % 2 === 1 ? { textAlign: 'right' } : {}
-                }>
-                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div className="inline-block bg-gradient-to-r from-pink-500 to-coral-400 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
-                      {event.year}
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
-                      {event.title}
-                    </h3>
-                    <p className="text-slate-600 text-lg leading-relaxed">
-                      {event.description}
-                    </p>
-                  </div>
-                </div>
+        <div className="hidden md:grid grid-cols-2 gap-16 items-center">
 
-                {/* Timeline dot */}
-                <div className="hidden lg:flex justify-center">
-                  <div className="w-5 h-5 bg-gradient-to-r from-pink-500 to-coral-400 rounded-full ring-4 ring-white shadow-lg" />
-                </div>
+          {/* TEXTO */}
 
-                {/* Media */}
-                <div className="flex-1 group">
-                  <div
-                    className="overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer"
-                    onMouseEnter={() => handleMediaHover(event.id, event.mediaType)}
-                    onMouseLeave={() => handleMediaLeave(event.id, event.mediaType)}
-                  >
-                    {event.mediaType === "image" ? (
-                      <img
-                        src={event.media}
-                        alt={event.title}
-                        className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="relative w-full h-72 bg-slate-100">
-                        <video
-                          ref={(el) => {
-                            if (el) videoRefs.current[event.id] = el;
-                          }}
-                          src={event.media}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          muted
-                          loop
-                        />
-                        {/* Play indicator for GIFs/Videos */}
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-300">
-                          {hoveredId !== event.id && (
-                            <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:opacity-0 transition-opacity duration-300">
-                              <div className="w-0 h-0 border-l-4 border-l-white border-t-3 border-t-transparent border-b-3 border-b-transparent ml-0.5" />
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+          <div className="space-y-7 text-lg text-slate-700 leading-relaxed">
 
-        {/* Section divider with different colors */}
-        <div className="mt-20 py-12 bg-white rounded-2xl">
-          <div className="text-center space-y-6 animate-fade-in">
-            <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">
-              Y esto es solo el comienzo...
+            <h3 className="text-3xl font-bold text-slate-900">
+              Hola, soy Natalia
             </h3>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Cada día trabajamos para traerte contenido más creativo, auténtico
-              e impactante. ¡Gracias por ser parte de este viaje!
+
+            <p>
+              Mamá, creadora de contenido y apasionada por ayudar a las personas
+              a mejorar su alimentación de una manera simple, real y sin
+              complicaciones.
             </p>
+
+            <p>
+              Todo comenzó compartiendo pequeñas recetas desde mi cocina,
+              intentando mostrar que comer mejor no tiene que ser difícil,
+              ni caro, ni aburrido.
+            </p>
+
+            <p>
+              Con el tiempo esa simple idea se transformó en una comunidad
+              increíble de personas que buscan lo mismo: vivir mejor,
+              sentirse mejor y disfrutar la comida sin culpa.
+            </p>
+
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-pink-100">
+
+              <p className="text-xl font-semibold text-slate-900">
+                Hoy miles de personas forman parte de este viaje.
+              </p>
+
+              <p className="text-slate-600 mt-2">
+                Y todo empezó compartiendo momentos reales de mi vida.
+              </p>
+
+            </div>
+
           </div>
+
+          {/* COLLAGE */}
+
+          <div className="relative h-[520px]">
+
+            {fotos.map((foto, i) => (
+
+              <img
+                key={i}
+                src={foto}
+                onMouseEnter={() => setActive(i)}
+                className={`absolute rounded-3xl shadow-2xl object-cover transition-all duration-500 cursor-pointer
+                  
+                  ${i === 0 && "w-48 left-0 top-0 rotate-[-8deg]"}
+                  ${i === 1 && "w-52 right-0 top-8 rotate-[6deg]"}
+                  ${i === 2 && "w-44 left-10 bottom-0 rotate-[4deg]"}
+                  ${i === 3 && "w-56 right-12 bottom-6 rotate-[-6deg]"}
+                  ${i === 4 && "w-40 left-36 top-40 rotate-[10deg]"}
+                  ${i === 5 && "w-48 right-36 top-44 rotate-[-10deg]"}
+                  
+                  ${active === i
+                    ? "scale-110 z-20"
+                    : "opacity-90 hover:scale-105"}
+                `}
+              />
+
+            ))}
+
+          </div>
+
         </div>
+
+
+
+{/* MOBILE SLIDER */}
+
+<div className="md:hidden">
+
+  <div className="text-center space-y-5 text-lg text-slate-700 mb-10">
+
+    <h3 className="text-2xl font-bold text-slate-900">
+      Hola, soy Natalia
+    </h3>
+
+    <p>
+      Mamá y creadora de contenido. Comparto recetas, ideas y momentos
+      de mi vida para demostrar que comer mejor puede ser simple.
+    </p>
+
+    <p className="font-semibold text-slate-900">
+      Esta comunidad nació desde mi casa… y hoy somos miles.
+    </p>
+
+  </div>
+
+  {/* SLIDER */}
+
+  <div className="relative w-full overflow-hidden">
+
+    <div
+      className="flex transition-transform duration-500"
+      style={{
+        transform: `translateX(-${active * 100}%)`
+      }}
+    >
+
+      {fotos.map((foto, i) => (
+
+        <div
+          key={i}
+          className="min-w-full px-4 flex justify-center"
+        >
+
+          <img
+            src={foto}
+            className="w-full max-w-sm h-[420px] object-cover rounded-3xl shadow-xl"
+          />
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+  {/* CONTROLES */}
+
+  <div className="flex justify-center gap-6 mt-6">
+
+    <button
+      onClick={() =>
+        setActive((prev) =>
+          prev === 0 ? fotos.length - 1 : prev - 1
+        )
+      }
+      className="bg-white shadow-lg px-4 py-2 rounded-full"
+    >
+      ←
+    </button>
+
+    <button
+      onClick={() =>
+        setActive((prev) =>
+          prev === fotos.length - 1 ? 0 : prev + 1
+        )
+      }
+      className="bg-white shadow-lg px-4 py-2 rounded-full"
+    >
+      →
+    </button>
+
+  </div>
+
+  {/* INDICADORES */}
+
+  <div className="flex justify-center gap-2 mt-4">
+
+    {fotos.map((_, i) => (
+
+      <div
+        key={i}
+        onClick={() => setActive(i)}
+        className={`w-2.5 h-2.5 rounded-full transition cursor-pointer
+          
+          ${
+            active === i
+              ? "bg-pink-500 scale-125"
+              : "bg-slate-300"
+          }
+        `}
+      />
+
+    ))}
+
+  </div>
+
+</div>
+
       </div>
+
     </section>
   );
 }
