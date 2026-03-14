@@ -4,7 +4,7 @@ import ReelsSection from "@/components/ReelsSection";
 import TimelineSection from "@/components/TimelineSection";
 import MetricsSection from "@/components/MetricsSection";
 import SocialSection from "@/components/SocialSection";
-import ContactSection from "@/components/ContactSection";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 export default function Index() {
@@ -46,9 +46,9 @@ export default function Index() {
       {/* Social Section */}
       <SocialSection />
 
-      {/* Contact Section */}
-      <div ref={contactRef} id="contact">
-        <ContactSection />
+      {/* Contact Form Section */}
+      <div ref={contactRef}>
+        <ContactForm />
       </div>
 
       {/* Footer */}

@@ -77,10 +77,11 @@ export default function TimelineSection() {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-5xl sm:text-6xl font-bold mb-4">
-            <span className="text-gradient">Mi Historia</span>
+            <span className="text-gradient">Quién Soy</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Un viaje increíble desde mis inicios hasta hoy
+            Soy Natalia, creadora de contenido apasionada por educar sobre nutrición y bienestar.
+            Mi objetivo es inspirar a miles de personas a través de contenido auténtico y de valor.
           </p>
         </div>
 

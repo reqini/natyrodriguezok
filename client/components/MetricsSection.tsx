@@ -94,10 +94,10 @@ export default function MetricsSection() {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-5xl sm:text-6xl font-bold mb-4">
-            <span className="text-gradient">Mis Métricas</span>
+            <span className="text-gradient">Por qué colaborar conmigo</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Números que demuestran el impacto de mi contenido educativo sobre nutrición y bienestar
+            Mis números hablan por sí solos. Alcance garantizado y audiencia comprometida en nutrición y bienestar.
           </p>
         </div>
 
