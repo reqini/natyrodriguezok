@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface TimelineEvent {
   id: string;
@@ -46,12 +46,12 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
 
 export default function TimelineSection() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [videoRefs, setVideoRefs] = useState<Record<string, HTMLVideoElement | null>>({});
+  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
 
   const handleMediaHover = (eventId: string, mediaType: string) => {
     setHoveredId(eventId);
     if (mediaType !== "image") {
-      const video = videoRefs[eventId];
+      const video = videoRefs.current[eventId];
       if (video) {
         video.play().catch(() => {
           // Handle autoplay restrictions
@@ -63,7 +63,7 @@ export default function TimelineSection() {
   const handleMediaLeave = (eventId: string, mediaType: string) => {
     setHoveredId(null);
     if (mediaType !== "image") {
-      const video = videoRefs[eventId];
+      const video = videoRefs.current[eventId];
       if (video) {
         video.pause();
         video.currentTime = 0;
@@ -138,7 +138,7 @@ export default function TimelineSection() {
                       <div className="relative w-full h-72 bg-slate-100">
                         <video
                           ref={(el) => {
-                            if (el) setVideoRefs((prev) => ({ ...prev, [event.id]: el }));
+                            if (el) videoRefs.current[event.id] = el;
                           }}
                           src={event.media}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

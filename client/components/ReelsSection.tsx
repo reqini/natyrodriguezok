@@ -1,5 +1,5 @@
 import { Eye, Heart, Share2, Calendar, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface Reel {
   id: string;
@@ -82,7 +82,7 @@ interface ReelsSectionProps {
 export default function ReelsSection({ onReelClick }: ReelsSectionProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [selectedReel, setSelectedReel] = useState<Reel | null>(null);
-  const [videoRefs, setVideoRefs] = useState<Record<string, HTMLVideoElement | null>>({});
+  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
 
   const formatNumber = (num: number) => {
     if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
@@ -100,7 +100,7 @@ export default function ReelsSection({ onReelClick }: ReelsSectionProps) {
 
   const handleReelHover = (reelId: string) => {
     setHoveredId(reelId);
-    const video = videoRefs[reelId];
+    const video = videoRefs.current[reelId];
     if (video) {
       video.play().catch(() => {
         // Handle autoplay restrictions
@@ -110,7 +110,7 @@ export default function ReelsSection({ onReelClick }: ReelsSectionProps) {
 
   const handleReelLeave = (reelId: string) => {
     setHoveredId(null);
-    const video = videoRefs[reelId];
+    const video = videoRefs.current[reelId];
     if (video) {
       video.pause();
       video.currentTime = 0;
@@ -151,7 +151,7 @@ export default function ReelsSection({ onReelClick }: ReelsSectionProps) {
                   {/* Video */}
                   <video
                     ref={(el) => {
-                      if (el) setVideoRefs((prev) => ({ ...prev, [reel.id]: el }));
+                      if (el) videoRefs.current[reel.id] = el;
                     }}
                     src={reel.videoUrl}
                     className="w-full h-full object-cover"
