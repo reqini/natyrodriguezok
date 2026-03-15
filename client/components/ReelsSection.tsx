@@ -231,19 +231,15 @@ export default function ReelsSection() {
         {/* MOBILE SLIDER */}
 
         <div className="md:hidden flex gap-5 overflow-x-auto snap-x snap-mandatory pb-8">
-
           {SAMPLE_REELS.map((reel) => (
-
             <div
               key={reel.id}
               ref={(el) => (mobileRefs.current[reel.id] = el)}
               data-id={reel.id}
               className="snap-center min-w-[85%]"
-              onClick={() => setSelectedReel(reel)}
+              // En mobile, no abrir modal
             >
-
               <div className="rounded-3xl overflow-hidden shadow-xl">
-
                 <video
                   ref={(el) => (videoRefs.current[reel.id] = el)}
                   src={reel.videoUrl}
@@ -252,55 +248,31 @@ export default function ReelsSection() {
                   playsInline
                   className="w-full aspect-[9/16] object-cover"
                 />
-
               </div>
-
             </div>
-
           ))}
-
         </div>
 
       </div>
 
-      {/* MODAL */}
-
+      {/* MODAL solo en desktop */}
       {selectedReel && (
-
-        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-6">
-
+        <div className="hidden md:flex fixed inset-0 bg-black/95 z-50 items-center justify-center p-6">
           <button
             onClick={() => setSelectedReel(null)}
             className="absolute top-8 right-8 text-white"
           >
             <X size={36} />
           </button>
-
           <div className="max-w-md w-full">
-
             <video
               src={selectedReel.videoUrl}
               autoPlay
               controls
               className="w-full rounded-2xl"
             />
-
-            {/* <div className="text-white mt-4">
-
-              <h3 className="text-2xl font-bold">
-                {selectedReel.title}
-              </h3>
-
-              <p className="text-gray-300">
-                {selectedReel.description}
-              </p>
-
-            </div> */}
-
           </div>
-
         </div>
-
       )}
 
     </section>
