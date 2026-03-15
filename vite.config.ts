@@ -5,14 +5,13 @@ import path from "path";
 export default defineConfig({
   root: path.resolve(__dirname, "client"),
 
-  base: "./", // <- esto asegura que todos los assets usen rutas relativas
+  // Esto asegura que los assets se carguen correctamente en Vercel
+  base: "./",
 
   server: {
     host: "::",
     port: 8080,
-    fs: {
-      allow: [".."],
-    },
+    fs: { allow: [".."] },
   },
 
   build: {

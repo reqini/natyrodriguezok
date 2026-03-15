@@ -4,9 +4,10 @@
     {
       "src": "client/package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "../dist/spa"
-      }
+      "config": { "distDir": "../dist/spa" }
     }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
