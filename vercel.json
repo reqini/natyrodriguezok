@@ -2,9 +2,9 @@
   "version": 2,
   "builds": [
     {
-      "src": "client/package.json",
+      "src": "client/index.html",
       "use": "@vercel/static-build",
-      "config": { "distDir": "../dist/spa" }
+      "config": { "distDir": "dist/spa" }
     }
   ],
   "routes": [
