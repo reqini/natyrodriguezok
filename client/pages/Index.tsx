@@ -5,6 +5,8 @@ import TimelineSection from "@/components/TimelineSection";
 import MetricsSection from "@/components/MetricsSection";
 import SocialSection from "@/components/SocialSection";
 import BrandsSection from "@/components/BrandsSection";
+import MarcasSection from "@/components/MarcasSection";
+import PresupuestoFormSection from "@/components/PresupuestoFormSection";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -39,10 +41,18 @@ export default function Index() {
         <TimelineSection />
       </div>
 
-      {/* BrandsSection */}
+
+
+      {/* Marcas que confían en mí */}
+      <MarcasSection />
+
+      {/* BrandsSection (audiencia) */}
       <div>
         <BrandsSection />
       </div>
+
+      {/* Presupuesto personalizado */}
+      <PresupuestoFormSection />
 
       {/* Metrics Section */}
       <div id="metrics">
