@@ -1,4 +1,4 @@
-import { ExternalLink, Users, Instagram, MessageCircle, Youtube } from "lucide-react";
+import { ExternalLink, Users, Instagram, MessageCircle } from "lucide-react";
 
 interface SocialNetwork {
   id: string;
@@ -11,6 +11,7 @@ interface SocialNetwork {
   bgColor: string;
 }
 
+// IMPORT ICONS Y REDES
 const SOCIAL_NETWORKS: SocialNetwork[] = [
   {
     id: "instagram",
@@ -44,17 +45,20 @@ export default function SocialSection() {
   return (
     <section className="py-20 bg-gradient-to-b from-white to-beige-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+
+        {/* HEADER */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-5xl sm:text-6xl font-bold mb-4">
-            <span className="text-gradient">Mis Redes</span>
+            <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              Mis Redes
+            </span>
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             Sígueme en todas mis plataformas para no perderte ningún contenido
           </p>
         </div>
 
-        {/* Social Cards Grid */}
+        {/* CARDS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {SOCIAL_NETWORKS.map((social, index) => (
             <div
@@ -65,7 +69,7 @@ export default function SocialSection() {
               <div
                 className={`h-full ${social.bgColor} rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group`}
               >
-                {/* Header */}
+                {/* HEADER */}
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-4">
                     <div className={`p-3 bg-gradient-to-br ${social.color} text-white rounded-xl`}>
@@ -80,7 +84,7 @@ export default function SocialSection() {
                   </div>
                 </div>
 
-                {/* Followers */}
+                {/* FOLLOWERS */}
                 <div className="flex items-center gap-2 mb-8 p-4 bg-white/50 rounded-xl">
                   <Users className="w-5 h-5 text-slate-600" />
                   <div>
@@ -91,7 +95,7 @@ export default function SocialSection() {
                   </div>
                 </div>
 
-                {/* CTA Button */}
+                {/* CTA */}
                 <a
                   href={social.url}
                   target="_blank"
@@ -106,13 +110,16 @@ export default function SocialSection() {
           ))}
         </div>
 
-        {/* Call to Action */}
+        {/* CTA FINAL */}
         <div className="mt-16 text-center animate-fade-in">
           <p className="text-lg text-slate-600 mb-6">
             ¿Todavía no me sigues? ¡Únete a mi comunidad de{" "}
-            <span className="text-gradient font-bold">+1M de seguidores</span>!
+            <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text font-bold">
+              +1M de seguidores
+            </span>!
           </p>
         </div>
+
       </div>
     </section>
   );
