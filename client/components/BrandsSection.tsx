@@ -23,48 +23,58 @@ export default function AudienceStatsSection() {
 
   return (
     <section className="py-32 bg-white">
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              ¿Quiénes me siguen?
-            </span>
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+            <span className="text-gradient">¿Quiénes me siguen?</span>
           </h2>
-          <p className="text-slate-600 text-xl max-w-2xl mx-auto">
-            Un vistazo real a mi comunidad en Instagram y TikTok. <br />
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            Un vistazo real a mi comunidad en Instagram y TikTok.<br />
             Datos actualizados manualmente.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-10 text-center">
-          <div>
-            <h3 className="text-2xl font-bold mb-2 text-pink-500">Edad</h3>
-            <ul className="space-y-1">
-              {stats.ageGroups.map((g) => (
-                <li key={g.label} className="text-slate-700">
-                  {g.label}: <span className="font-semibold">{g.percent}%</span>
-                </li>
-              ))}
-            </ul>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Edad */}
+          <div className="bg-gradient-to-br from-pink-100 to-pink-50 p-1 rounded-2xl shadow-lg">
+            <div className="bg-white rounded-2xl p-8 h-full flex flex-col items-center">
+              <h3 className="text-2xl font-bold mb-4 text-pink-500">Edad</h3>
+              <ul className="space-y-2 w-full">
+                {stats.ageGroups.map((g) => (
+                  <li key={g.label} className="flex justify-between text-slate-700 text-lg">
+                    <span>{g.label}</span>
+                    <span className="font-semibold">{g.percent}%</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div>
-            <h3 className="text-2xl font-bold mb-2 text-purple-500">Género</h3>
-            <ul className="space-y-1">
-              {stats.gender.map((g) => (
-                <li key={g.label} className="text-slate-700">
-                  {g.label}: <span className="font-semibold">{g.percent}%</span>
-                </li>
-              ))}
-            </ul>
+          {/* Género */}
+          <div className="bg-gradient-to-br from-purple-100 to-purple-50 p-1 rounded-2xl shadow-lg">
+            <div className="bg-white rounded-2xl p-8 h-full flex flex-col items-center">
+              <h3 className="text-2xl font-bold mb-4 text-purple-500">Género</h3>
+              <ul className="space-y-2 w-full">
+                {stats.gender.map((g) => (
+                  <li key={g.label} className="flex justify-between text-slate-700 text-lg">
+                    <span>{g.label}</span>
+                    <span className="font-semibold">{g.percent}%</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div>
-            <h3 className="text-2xl font-bold mb-2 text-blue-500">Países</h3>
-            <ul className="space-y-1">
-              {stats.countries.map((c) => (
-                <li key={c.label} className="text-slate-700">
-                  {c.label}: <span className="font-semibold">{c.percent}%</span>
-                </li>
-              ))}
-            </ul>
+          {/* Países */}
+          <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-1 rounded-2xl shadow-lg">
+            <div className="bg-white rounded-2xl p-8 h-full flex flex-col items-center">
+              <h3 className="text-2xl font-bold mb-4 text-blue-500">Países</h3>
+              <ul className="space-y-2 w-full">
+                {stats.countries.map((c) => (
+                  <li key={c.label} className="flex justify-between text-slate-700 text-lg">
+                    <span>{c.label}</span>
+                    <span className="font-semibold">{c.percent}%</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
         <div className="mt-12 text-center">
