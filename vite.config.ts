@@ -3,17 +3,9 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import copy from "rollup-plugin-copy";
 
-// Cambia el base para GitHub Pages (ajusta el repo si es necesario)
-const repoName = "natyrodriguez"; // Cambia si tu repo es diferente
-
 export default defineConfig({
   root: path.resolve(__dirname, "client"),
-  base: `/${repoName}/`,
-  server: {
-    host: "::",
-    port: 8080,
-    fs: { allow: [".."] },
-  },
+  base: "/", // Vercel necesita que sea root absoluto
   build: {
     outDir: path.resolve(__dirname, "dist/spa"),
     emptyOutDir: true,
@@ -22,8 +14,8 @@ export default defineConfig({
     react(),
     copy({
       targets: [
-        { src: path.resolve(__dirname, "client/images"), dest: path.resolve(__dirname, "dist/spa") },
-        { src: path.resolve(__dirname, "client/videos"), dest: path.resolve(__dirname, "dist/spa") },
+        { src: path.resolve(__dirname, "client/images"), dest: path.resolve(__dirname, "dist/spa/images") },
+        { src: path.resolve(__dirname, "client/videos"), dest: path.resolve(__dirname, "dist/spa/videos") },
       ],
       hook: "writeBundle",
       flatten: false,
