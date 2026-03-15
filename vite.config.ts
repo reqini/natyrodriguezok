@@ -5,6 +5,8 @@ import path from "path";
 export default defineConfig({
   root: path.resolve(__dirname, "client"),
 
+  base: "./", // <- esto asegura que todos los assets usen rutas relativas
+
   server: {
     host: "::",
     port: 8080,
