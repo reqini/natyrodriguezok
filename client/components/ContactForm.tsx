@@ -1,5 +1,5 @@
 import { Mail, Phone, User, Building2, CheckCircle, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface FormData {
   name: string;
@@ -57,6 +57,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState<SuccessState>({ show: false, name: "" });
+  const formRef = useRef<HTMLFormElement>(null);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -83,28 +84,19 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
+    if (!validateForm()) return;
     setIsSubmitting(true);
-
     try {
-      const response = await fetch("/api/contact", {
+      // Formspree endpoint (replace with your Formspree form ID)
+      const FORMSPREE_URL = "https://formspree.io/f/xbjngwqg";
+      const response = await fetch(FORMSPREE_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Accept": "application/json" },
+        body: new FormData(formRef.current!),
       });
-
       const data = await response.json();
-
-      if (data.success) {
+      if (data.ok || data.success) {
         setSuccess({ show: true, name: formData.name });
-
-        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -114,16 +106,11 @@ export default function ContactForm() {
           budget: "",
           message: "",
         });
-
-        // Hide success message after 8 seconds
-        setTimeout(() => {
-          setSuccess({ show: false, name: "" });
-        }, 8000);
+        setTimeout(() => setSuccess({ show: false, name: "" }), 8000);
       } else {
-        alert("Error al enviar el mensaje: " + (data.error || "Intenta de nuevo"));
+        alert("Error al enviar el mensaje. Intenta de nuevo.");
       }
     } catch (error) {
-      console.error("Form submission error:", error);
       alert("Error al enviar el mensaje. Por favor intenta de nuevo.");
     } finally {
       setIsSubmitting(false);
@@ -165,7 +152,7 @@ export default function ContactForm() {
 
         {/* Form */}
         <div className="bg-gradient-to-br from-beige-50 to-white rounded-2xl p-8 sm:p-12 shadow-xl border border-beige-100 animate-slide-up">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" autoComplete="off">
             {/* Name Field */}
             <div>
               <label htmlFor="name" className="block text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
@@ -184,6 +171,7 @@ export default function ContactForm() {
                     ? "border-red-400 bg-red-50 focus:border-red-500"
                     : "border-beige-300 bg-white focus:border-coral-400 focus:ring-2 focus:ring-coral-200"
                 }`}
+                required
               />
               {errors.name && (
                 <p className="text-red-600 text-sm mt-2 flex items-center gap-1">
@@ -210,6 +198,7 @@ export default function ContactForm() {
                     ? "border-red-400 bg-red-50 focus:border-red-500"
                     : "border-beige-300 bg-white focus:border-coral-400 focus:ring-2 focus:ring-coral-200"
                 }`}
+                required
               />
               {errors.email && (
                 <p className="text-red-600 text-sm mt-2 flex items-center gap-1">
@@ -263,6 +252,7 @@ export default function ContactForm() {
                 value={formData.queryType}
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 rounded-xl border-2 border-beige-300 bg-white focus:outline-none focus:border-coral-400 focus:ring-2 focus:ring-coral-200 transition-all text-base"
+                required
               >
                 {QUERY_TYPES.map((type) => (
                   <option key={type.value} value={type.value}>
@@ -312,6 +302,7 @@ export default function ContactForm() {
                     ? "border-red-400 bg-red-50 focus:border-red-500"
                     : "border-beige-300 bg-white focus:border-coral-400 focus:ring-2 focus:ring-coral-200"
                 }`}
+                required
               />
               {errors.message && (
                 <p className="text-red-600 text-sm mt-2 flex items-center gap-1">
