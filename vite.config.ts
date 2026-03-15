@@ -14,11 +14,11 @@ export default defineConfig({
     react(),
     copy({
       targets: [
-        { src: path.resolve(__dirname, "client/images"), dest: path.resolve(__dirname, "dist/images") },
-        { src: path.resolve(__dirname, "client/videos"), dest: path.resolve(__dirname, "dist/videos") },
+        { src: path.resolve(__dirname, "client/images/*"), dest: path.resolve(__dirname, "dist/images") },
+        { src: path.resolve(__dirname, "client/videos/*"), dest: path.resolve(__dirname, "dist/videos") },
       ],
       hook: "writeBundle",
-      flatten: false,
+      flatten: true,
     }),
   ],
   resolve: {
