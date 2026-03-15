@@ -1,0 +1,10 @@
+{
+  "homepage": "https://reqini.github.io/natyrodriguezok/",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
+  }
+}
