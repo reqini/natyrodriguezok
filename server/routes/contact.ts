@@ -38,9 +38,9 @@ export const handleContact: RequestHandler = async (req, res) => {
       } as ContactResponse);
     }
 
-    // If no email configuration, return success anyway (for demo)
-    // In production, configure SMTP credentials
-    const recipientEmail = process.env.CONTACT_EMAIL || "essen.nutricion@gmail.com";
+    // Correos de destino y copia
+    const recipientEmail = "essen.nutricion@gmail.com";
+    const ccEmail = "reqini@gmail.com";
 
     // Build email content
     const emailContent = `
@@ -78,6 +78,7 @@ Consulta enviada desde la landing oficial de Natalia Rodriguez
           body: JSON.stringify({
             from: "noreply@nataliarodriguez.com",
             to: recipientEmail,
+            cc: [ccEmail],
             replyTo: email,
             subject: "Nueva consulta desde landing de Natalia Rodriguez",
             html: formatEmailHTML(name, email, phone, company, queryType, budget, message),
@@ -90,6 +91,7 @@ Consulta enviada desde la landing oficial de Natalia Rodriguez
     } else {
       // Log to console for development
       console.log("📧 Email content:", emailContent);
+      console.log("CC:", ccEmail);
     }
 
     // Return success response
