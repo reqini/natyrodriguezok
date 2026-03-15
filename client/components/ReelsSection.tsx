@@ -191,15 +191,15 @@ export default function ReelsSection() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-4">
 
-                  <h3 className="text-white font-semibold text-lg">
+                  {/* <h3 className="text-white font-semibold text-lg">
                     {reel.title}
                   </h3>
 
                   <p className="text-gray-200 text-sm">
                     {reel.description}
-                  </p>
+                  </p> */}
 
-                  <div className="flex gap-4 mt-3 text-white text-xs">
+                 {/*  <div className="flex gap-4 mt-3 text-white text-xs">
 
                     <span className="flex items-center gap-1">
                       <Eye size={14} />
@@ -216,7 +216,7 @@ export default function ReelsSection() {
                       {formatNumber(reel.shares)}
                     </span>
 
-                  </div>
+                  </div> */}
 
                 </div>
 
@@ -285,7 +285,7 @@ export default function ReelsSection() {
               className="w-full rounded-2xl"
             />
 
-            <div className="text-white mt-4">
+            {/* <div className="text-white mt-4">
 
               <h3 className="text-2xl font-bold">
                 {selectedReel.title}
@@ -295,7 +295,7 @@ export default function ReelsSection() {
                 {selectedReel.description}
               </p>
 
-            </div>
+            </div> */}
 
           </div>
 
