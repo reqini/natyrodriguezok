@@ -15,6 +15,16 @@ export default function Hero({ onViewReels, onContact }: HeroProps) {
       </div>
 
       <div className="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center text-center">
+        {/* Avatar */}
+        <div className="relative mb-4 group">
+          <div className="absolute inset-0 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:blur-md group-hover:bg-pink-100/40 z-0" />
+          <img
+            src="/natyrodriguezok/images/foto-familiar-2.jpeg"
+            alt="Natalia Rodriguez"
+            className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-white shadow-lg transition-all duration-300 group-hover:scale-110 relative z-10"
+            loading="lazy"
+          />
+        </div>
         <div className="space-y-4 animate-fade-in">
           <span className="inline-block px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-semibold">
             Creadora de Contenido

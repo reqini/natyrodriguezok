@@ -30,11 +30,16 @@ const QUERY_TYPES = [
 ];
 
 const BUDGET_OPTIONS = [
-  "$2,000 - $5,000 USD",
+  "$100 - $300 USD",
+  "$300 - $700 USD",
+  "$700 - $1,500 USD",
+  "$1,500 - $3,000 USD",
+  "$3,000 - $5,000 USD",
   "$5,000 - $10,000 USD",
   "$10,000 - $25,000 USD",
   "$25,000 - $50,000 USD",
   "$50,000+ USD",
+  "Quiero ofertar otro monto",
   "Por consultar",
 ];
 
