@@ -5,8 +5,8 @@ import path from "path";
 export default defineConfig({
   root: path.resolve(__dirname, "client"),
 
-  // Esto asegura que los assets se carguen correctamente en Vercel
-  base: "./",
+  // Esto es crucial para GitHub Pages
+  base: "/natyrodriguezok/",
 
   server: {
     host: "::",
