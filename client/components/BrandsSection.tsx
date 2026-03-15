@@ -6,13 +6,14 @@ interface Brand {
   logo: string;
 }
 
+const base = import.meta.env.BASE_URL;
 const BRANDS: Brand[] = [
-  { id: 1, name: "Twistshake", logo: "/images/marca-1.jpeg" },
-  { id: 2, name: "Minimoka", logo: "/images/marca-2.jpeg" },
-  { id: 3, name: "Grupolar", logo: "/images/marca-3.jpeg" },
-  { id: 4, name: "Twistshake", logo: "/images/marca-1.jpeg" },
-  { id: 5, name: "Minimoka", logo: "/images/marca-2.jpeg" },
-  { id: 6, name: "Grupolar", logo: "/images/marca-3.jpeg" }
+  { id: 1, name: "Twistshake", logo: `${base}images/marca-1.jpeg` },
+  { id: 2, name: "Minimoka", logo: `${base}images/marca-2.jpeg` },
+  { id: 3, name: "Grupolar", logo: `${base}images/marca-3.jpeg` },
+  { id: 4, name: "Twistshake", logo: `${base}images/marca-1.jpeg` },
+  { id: 5, name: "Minimoka", logo: `${base}images/marca-2.jpeg` },
+  { id: 6, name: "Grupolar", logo: `${base}images/marca-3.jpeg` }
 ];
 
 export default function BrandsSection() {

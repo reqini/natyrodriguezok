@@ -1,12 +1,13 @@
 import { useState } from "react";
 
+const base = import.meta.env.BASE_URL;
 const fotos = [
-  "/images/foto-familiar-1.jpeg",
-  "/images/foto-familiar-2.jpeg",
-  "/images/foto-familiar-3.jpeg",
-  "/images/foto-familiar-4.jpeg",
-  "/images/foto-familiar-5.jpeg",
-  "/images/foto-familiar-6.jpeg",
+  `${base}images/foto-familiar-1.jpeg`,
+  `${base}images/foto-familiar-2.jpeg`,
+  `${base}images/foto-familiar-3.jpeg`,
+  `${base}images/foto-familiar-4.jpeg`,
+  `${base}images/foto-familiar-5.jpeg`,
+  `${base}images/foto-familiar-6.jpeg`,
 ];
 
 export default function QuienSoySection() {
