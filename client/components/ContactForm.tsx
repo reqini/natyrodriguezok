@@ -49,7 +49,7 @@ export default function ContactForm() {
         {/* Columna 1: Foto */}
         <div className="flex justify-center w-full md:w-1/2 mb-8 md:mb-0">
           <img
-            src="/natyrodriguezok/images/foto-familiar-6.jpeg"
+            src="/images/foto-familiar-6.jpeg"
             alt="Natalia Rodriguez contacto"
             className="rounded-3xl shadow-2xl w-full max-w-xs md:max-w-sm object-cover border-4 border-white"
             loading="lazy"

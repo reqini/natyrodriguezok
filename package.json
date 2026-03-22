@@ -10,7 +10,7 @@
       "dist/server/**/*.js"
     ]
   },
-  "homepage": "https://reqini.github.io/natyrodriguezok/",
+  "homepage": ".",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
