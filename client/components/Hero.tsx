@@ -41,11 +41,11 @@ export default function Hero({ onViewReels, onContact }: HeroProps) {
         {/* Stats */}
         <div className="flex flex-wrap justify-center gap-4 py-6 w-full">
           <div className="flex-1 min-w-[90px] space-y-1">
-            <p className="text-xl sm:text-2xl font-bold text-gradient">118K</p>
+            <p className="text-xl sm:text-2xl font-bold text-gradient">116K</p>
             <p className="text-xs sm:text-sm text-slate-600">Seguidores IG</p>
           </div>
           <div className="flex-1 min-w-[90px] space-y-1">
-            <p className="text-xl sm:text-2xl font-bold text-gradient">4800K</p>
+            <p className="text-xl sm:text-2xl font-bold text-gradient">4.8K</p>
             <p className="text-xs sm:text-sm text-slate-600">Seguidores TikTok</p>
           </div>
           {/* <div className="flex-1 min-w-[90px] space-y-1">

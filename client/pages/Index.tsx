@@ -5,8 +5,9 @@ import TimelineSection from "@/components/TimelineSection";
 import MetricsSection from "@/components/MetricsSection";
 import SocialSection from "@/components/SocialSection";
 import BrandsSection from "@/components/BrandsSection";
+import ServiciosSection from "@/components/ServiciosSection";
 import MarcasSection from "@/components/MarcasSection";
-import PresupuestoFormSection from "@/components/PresupuestoFormSection";
+import PresupuestoSection from "@/components/PresupuestoSection";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -41,7 +42,7 @@ export default function Index() {
         <TimelineSection />
       </div>
 
-
+      <ServiciosSection />
 
       {/* Marcas que confían en mí */}
       <MarcasSection />
@@ -52,7 +53,7 @@ export default function Index() {
       </div>
 
       {/* Presupuesto personalizado */}
-      <PresupuestoFormSection />
+      <PresupuestoSection />
 
       {/* Metrics Section */}
       <div id="metrics">

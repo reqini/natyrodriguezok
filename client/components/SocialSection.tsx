@@ -16,7 +16,7 @@ const SOCIAL_NETWORKS: SocialNetwork[] = [
     id: "instagram",
     name: "Instagram",
     handle: "@natyy.rodriguezok",
-    followers: 320000,
+    followers: 116000,
     icon: <Instagram className="w-8 h-8" />,
     url: "https://instagram.com/natyy.rodriguezok",
     color: "from-pink-500 to-orange-400",
@@ -26,7 +26,7 @@ const SOCIAL_NETWORKS: SocialNetwork[] = [
     id: "tiktok",
     name: "TikTok",
     handle: "@natyy.rodriguezok",
-    followers: 450000,
+    followers: 4800,
     icon: <MessageCircle className="w-8 h-8" />,
     url: "https://tiktok.com/@natyy.rodriguezok",
     color: "from-black to-slate-600",
@@ -107,12 +107,12 @@ export default function SocialSection() {
         </div>
 
         {/* Call to Action */}
-        <div className="mt-16 text-center animate-fade-in">
+        {/* <div className="mt-16 text-center animate-fade-in">
           <p className="text-lg text-slate-600 mb-6">
             ¿Todavía no me sigues? ¡Únete a mi comunidad de{" "}
             <span className="text-gradient font-bold">+1M de seguidores</span>!
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

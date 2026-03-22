@@ -62,8 +62,7 @@ export default function ContactForm() {
               <span className="text-gradient">Contacto directo</span>
             </h2>
             <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto md:mx-0">
-              Por el momento el formulario está deshabilitado.<br />
-              Podés contactarme por cualquiera de estos medios:
+              Conectemos y creemos algo increíble juntos
             </p>
           </div>
           <div className="flex flex-col gap-6 w-full max-w-2xl mx-auto md:mx-0">
@@ -86,10 +85,10 @@ export default function ContactForm() {
               <span className="text-slate-300">@natyy.rodriguezok</span>
             </a>
             {/* Email */}
-            <a href="mailto:essen.nutricion@gmail.com" className="flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl p-8 shadow-lg hover:scale-105 hover:shadow-2xl transition group">
+            <a href="mailto:natyyrodriguezok@gmail.com" className="flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl p-8 shadow-lg hover:scale-105 hover:shadow-2xl transition group">
               <Mail className="w-12 h-12 mb-2 text-blue-600 group-hover:scale-110 group-hover:text-blue-800 transition" />
               <span className="font-bold text-lg text-blue-600">Email</span>
-              <span className="text-slate-600">essen.nutricion@gmail.com</span>
+              <span className="text-slate-600">natyyrodriguezok@gmail.com</span>
             </a>
           </div>
         </div>

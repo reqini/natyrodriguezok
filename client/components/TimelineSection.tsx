@@ -29,7 +29,7 @@ export default function QuienSoySection() {
           </h2>
 
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Detrás de cada receta hay una historia, una familia y una pasión por compartir.
+            Detrás de cada contenido hay creatividad, autenticidad y una conexión real con mi comunidad.
           </p>
 
         </div>
@@ -47,21 +47,19 @@ export default function QuienSoySection() {
             </h3>
 
             <p>
-              Mamá, creadora de contenido y apasionada por ayudar a las personas
-              a mejorar su alimentación de una manera simple, real y sin
-              complicaciones.
+              Soy Naty Rodríguez, creadora de contenido y mamá de dos niños, con experiencia en redes sociales y marketing digital.
             </p>
 
             <p>
-              Todo comenzó compartiendo pequeñas recetas desde mi cocina,
-              intentando mostrar que comer mejor no tiene que ser difícil,
-              ni caro, ni aburrido.
+              Desarrollo contenido auténtico y estratégico que refleja mi vida cotidiana, logrando una conexión real con una comunidad de mujeres activa y comprometida.
             </p>
 
             <p>
-              Con el tiempo esa simple idea se transformó en una comunidad
-              increíble de personas que buscan lo mismo: vivir mejor,
-              sentirse mejor y disfrutar la comida sin culpa.
+              Trabajo con marcas que buscan generar confianza, cercanía e impacto a través de contenido natural, creíble y alineado a su identidad.
+            </p>
+
+            <p>
+              Mi objetivo es crear piezas que no solo comuniquen, sino que conecten, inspiren y generen resultados.
             </p>
 
             <div className="bg-white p-6 rounded-2xl shadow-lg border border-pink-100">

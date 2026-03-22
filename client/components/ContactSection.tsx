@@ -132,7 +132,7 @@ export default function ContactSection() {
 
             {/* Email Button */}
             <a
-              href="mailto:essen.nutricion@gmail.com"
+              href="mailto:natyyrodriguezok@gmail.com"
               className="group flex items-center gap-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
             >
               <div className="p-4 bg-gradient-to-br from-blue-400 to-indigo-600 text-white rounded-xl group-hover:shadow-lg transition-all">
@@ -140,7 +140,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h4 className="text-lg font-bold text-slate-900">Email</h4>
-                <p className="text-sm text-slate-600">essen.nutricion@gmail.com</p>
+                <p className="text-sm text-slate-600">natyyrodriguezok@gmail.com</p>
               </div>
               <div className="ml-auto text-2xl group-hover:translate-x-2 transition-transform">
                 →

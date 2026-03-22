@@ -53,7 +53,7 @@ const SAMPLE_REELS: Reel[] = [
     id: "5",
     title: "Hidratación",
     description: "Cuánta agua tomar",
-    videoUrl: `${base}videos/video-1.mp4`,
+    videoUrl: `${base}videos/video-5.mp4`,
     views: 178000,
     likes: 14200,
     shares: 2100,
@@ -62,7 +62,7 @@ const SAMPLE_REELS: Reel[] = [
     id: "6",
     title: "Rutina en casa",
     description: "10 minutos fitness",
-    videoUrl: `${base}videos/video-2.mp4`,
+    videoUrl: `${base}videos/video-6.mp4`,
     views: 421000,
     likes: 32100,
     shares: 5900,
@@ -71,20 +71,11 @@ const SAMPLE_REELS: Reel[] = [
     id: "7",
     title: "Meal prep",
     description: "Comidas de la semana",
-    videoUrl: `${base}videos/video-3.mp4`,
+    videoUrl: `${base}videos/video-7.mp4`,
     views: 368000,
     likes: 28000,
     shares: 4300,
-  },
-  {
-    id: "8",
-    title: "Tips energía",
-    description: "Cómo tener más energía",
-    videoUrl: `${base}videos/video-4.mp4`,
-    views: 310000,
-    likes: 22000,
-    shares: 3800,
-  },
+  }
 ];
 
 export default function ReelsSection() {
@@ -157,7 +148,7 @@ export default function ReelsSection() {
           </h2>
 
           <p className="text-slate-600 text-xl max-w-xl mx-auto">
-            Recetas, tips y contenido que transforma tu alimentación
+           Contenido real, ideas y experiencias que conectan con mujeres todos los días.
           </p>
 
         </div>

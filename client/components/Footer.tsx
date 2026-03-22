@@ -91,7 +91,9 @@ export default function Footer({ onScrollTop }: FooterProps) {
         {/* Bottom Footer */}
         <div className="py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-400 text-sm">
           <p>© {new Date().getFullYear()} Natalia Rodriguez. Todos los derechos reservados.</p>
-          <p>Hecho con ❤️</p>
+          <p>Desarrollado por:  <a href="https://www.lucianorecchini.com/" className="hover:text-coral-400 transition-colors" target="_blank" rel="noopener noreferrer">
+            Luciano Recchini - LR - Studio
+          </a></p>
         </div>
       </div>
 

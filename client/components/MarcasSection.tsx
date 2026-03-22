@@ -11,7 +11,9 @@ const BRANDS: Brand[] = [
   { id: 1, name: "Twistshake", logo: `${base}images/marca-1.jpeg` },
   { id: 2, name: "Minimoka", logo: `${base}images/marca-2.jpeg` },
   { id: 3, name: "Grupolar", logo: `${base}images/marca-3.jpeg` },
-  { id: 4, name: "Los Rojeles de Marcela", logo: `${base}images/marca-4.jpeg` }
+  { id: 4, name: "Los Rojeles de Marcela", logo: `${base}images/marca-4.jpeg` },
+  { id: 5, name: "Union Ganadera", logo: `${base}images/marca-5.jpeg` },
+  { id: 6, name: "Green is Good", logo: `${base}images/marca-7.jpeg` }
 ];
 
 export default function MarcasSection() {
@@ -25,10 +27,10 @@ export default function MarcasSection() {
             </span>
           </h2>
           <p className="text-slate-600 text-xl max-w-2xl mx-auto">
-            Trabajo con marcas líderes del sector salud y bienestar para llevar contenido de calidad a miles de personas.
+            Trabajo con diferentes empresas y marcas para generar contenido de calidad que llegue a una gran audiencia.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-10">
           {BRANDS.map((brand) => (
             <motion.div
               key={brand.id}
@@ -39,7 +41,7 @@ export default function MarcasSection() {
                 <img
                   src={brand.logo}
                   alt={brand.name}
-                  className="max-h-14 object-contain grayscale group-hover:grayscale-0 transition"
+                  className="max-h-14 object-contain transition"
                 />
               </div>
               <p className="mt-4 text-slate-700 font-medium">

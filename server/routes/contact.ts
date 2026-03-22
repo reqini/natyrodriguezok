@@ -39,7 +39,7 @@ export const handleContact: RequestHandler = async (req, res) => {
     }
 
     // Correos de destino y copia
-    const recipientEmail = "essen.nutricion@gmail.com";
+    const recipientEmail = "natyyrodriguezok@gmail.com";
     const ccEmail = "reqini@gmail.com";
 
     // Build email content
