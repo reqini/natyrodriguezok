@@ -175,7 +175,7 @@ export default function ReelsSection() {
                 <video
                   ref={(el) => (videoRefs.current[reel.id] = el)}
                   src={reel.videoUrl}
-                  muted
+                  /* muted */
                   loop
                   className="w-full h-full object-cover"
                 />
