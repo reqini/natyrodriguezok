@@ -28,7 +28,7 @@ export default function Footer({ onScrollTop }: FooterProps) {
               <span className="text-gradient">Natalia Rodriguez</span>
             </h3>
             <p className="text-gray-300 text-sm">
-              Creadora de contenido especializada en nutrición y bienestar.
+              Creadora de contenido y experiencias digitales.
             </p>
           </div>
 
