@@ -234,9 +234,12 @@ export default function ReelsSection() {
                 <video
                   ref={(el) => (videoRefs.current[reel.id] = el)}
                   src={reel.videoUrl}
-                  muted
+                  autoPlay
+                  /* muted */
                   loop
                   playsInline
+                  webkit-playsinline="true"
+                  preload="metadata"
                   className="w-full aspect-[9/16] object-cover"
                 />
               </div>

@@ -120,9 +120,20 @@ export default function QuienSoySection() {
     </h3>
 
     <p>
-      Mamá y creadora de contenido. Comparto recetas, ideas y momentos
-      de mi vida para demostrar que comer mejor puede ser simple.
-    </p>
+              Soy Naty Rodríguez, creadora de contenido y mamá de dos niños, con experiencia en redes sociales y marketing digital.
+            </p>
+
+            <p>
+              Desarrollo contenido auténtico y estratégico que refleja mi vida cotidiana, logrando una conexión real con una comunidad de mujeres activa y comprometida.
+            </p>
+
+            <p>
+              Trabajo con marcas que buscan generar confianza, cercanía e impacto a través de contenido natural, creíble y alineado a su identidad.
+            </p>
+
+            <p>
+              Mi objetivo es crear piezas que no solo comuniquen, sino que conecten, inspiren y generen resultados.
+            </p>
 
     <p className="font-semibold text-slate-900">
       Esta comunidad nació desde mi casa… y hoy somos miles.
