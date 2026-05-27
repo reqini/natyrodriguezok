@@ -211,6 +211,10 @@ export default function ReelsSection() {
     videoRefs.current[id]?.play().catch(() => {});
   };
 
+  const isIOS =
+  /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
   const stopVideo = (id: string) => {
     const v = videoRefs.current[id];
     if (v) {
@@ -349,14 +353,13 @@ export default function ReelsSection() {
               // En mobile, no abrir modal
             >
               <div className="rounded-3xl overflow-hidden shadow-xl">
-                <video
+                 <video
                   ref={(el) => (videoRefs.current[reel.id] = el)}
                   src={reel.videoUrl}
-                  autoPlay
-                  /* muted */
+                  autoPlay={isIOS}
+                  muted={isIOS}
                   loop
-                  playsInline
-                  webkit-playsinline="true"
+                  playsInline={isIOS}
                   preload="metadata"
                   className="w-full aspect-[9/16] object-cover"
                 />
