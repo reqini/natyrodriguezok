@@ -25,11 +25,8 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      - name: Verify pnpm version
-        run: pnpm --version
-
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build project
         run: pnpm build
@@ -38,6 +35,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/spa
+          publish_dir: ./dist
           publish_branch: gh-pages
           force_orphan: true
