@@ -356,7 +356,7 @@ export default function ReelsSection() {
                  <video
                   ref={(el) => (videoRefs.current[reel.id] = el)}
                   src={reel.videoUrl}
-                  autoPlay={isIOS}
+                  /* autoPlay={isIOS} */
                   muted={isIOS}
                   loop
                   playsInline={isIOS}
