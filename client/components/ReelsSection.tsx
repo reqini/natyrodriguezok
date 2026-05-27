@@ -80,7 +80,7 @@ const SAMPLE_REELS: Reel[] = [
     id: "8",
     title: "Receta saludable",
     description: "Platos nutritivos y deliciosos",
-    videoUrl: `${base}videos/video-8.mp4`,
+    videoUrl: `${base}videos/video-21.mp4`,
     views: 295000,
     likes: 22000,
     shares: 4300,
@@ -187,7 +187,7 @@ const SAMPLE_REELS: Reel[] = [
   {
     id: "18",
     title: "Titulo",
-    description: "Descripcion ejemplo",
+    description: "Descripcion ejemplo ultimo",
     videoUrl: `${base}videos/video-18.mp4`,
     views: 295000,
     likes: 22000,
@@ -293,6 +293,7 @@ export default function ReelsSection() {
                   ref={(el) => (videoRefs.current[reel.id] = el)}
                   src={reel.videoUrl}
                   /* muted */
+                  autoPlay
                   loop
                   className="w-full h-full object-cover"
                 />

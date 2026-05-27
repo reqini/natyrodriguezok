@@ -5,7 +5,7 @@ import copy from "rollup-plugin-copy";
 
 export default defineConfig({
   root: path.resolve(__dirname, "client"),
-  base: "/", // 👈 IMPORTANTE
+  base: "/natyrodriguezok/", // 👈 IMPORTANTE
   build: {
     outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
