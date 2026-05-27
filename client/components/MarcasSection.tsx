@@ -13,7 +13,13 @@ const BRANDS: Brand[] = [
   { id: 3, name: "Grupolar", logo: `${base}images/marca-3.jpeg` },
   { id: 4, name: "Los Rojeles de Marcela", logo: `${base}images/marca-4.jpeg` },
   { id: 5, name: "Union Ganadera", logo: `${base}images/marca-5.jpeg` },
-  { id: 6, name: "Green is Good", logo: `${base}images/marca-7.jpeg` }
+  { id: 6, name: "Green is Good", logo: `${base}images/marca-7.jpeg` },
+  { id: 7, name: "Cosmica Raiz", logo: `${base}images/marca-8.jpeg` },
+  { id: 8, name: "Mercado Libre", logo: `${base}images/marca-9.jpeg` },
+  { id: 9, name: "Shein", logo: `${base}images/marca-10.jpeg` },
+  { id: 10, name: "Mococo Kids", logo: `${base}images/marca-11.jpeg` },
+  { id: 11, name: "Emirates Perfumes", logo: `${base}images/marca-12.jpg` },
+  { id: 12, name: "Breaders", logo: `${base}images/marca-13.jpg` }
 ];
 
 export default function MarcasSection() {
