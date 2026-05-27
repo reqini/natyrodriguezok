@@ -4,14 +4,14 @@ export default function AudienceStatsSection() {
   const stats = {
     totalFollowers: 122500,
     ageGroups: [
-      { label: "18-24", percent: 38 },
-      { label: "25-34", percent: 34 },
-      { label: "35-44", percent: 12 },
-      { label: "45+", percent: 16 },
+      { label: "18-24", percent: 10 },
+      { label: "25-34", percent: 14 },
+      { label: "35-44", percent: 36 },
+      { label: "45+", percent: 40 },
     ],
     gender: [
-      { label: "Mujeres", percent: 55 },
-      { label: "Hombres", percent: 45 },
+      { label: "Mujeres", percent: 93 },
+      { label: "Hombres", percent: 7 },
     ],
     countries: [
       { label: "Argentina", percent: 85 },
@@ -21,7 +21,7 @@ export default function AudienceStatsSection() {
     ],
   };
 
-  
+
   const cards = [
     {
       title: "Edad",
