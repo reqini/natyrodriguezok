@@ -6,7 +6,9 @@ import copy from "rollup-plugin-copy";
 export default defineConfig({
   root: path.resolve(__dirname, "client"),
   publicDir: path.resolve(__dirname, "public"),
-  base: "/", // dominio propio natyrodriguez.online sirve desde la raíz
+  // Relativo: funciona tanto en natyrodriguez.online (raíz) como en
+  // reqini.github.io/natyrodriguezok/ (subpath) sin tener que elegir uno.
+  base: "./",
   build: {
     outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
