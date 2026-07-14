@@ -24,7 +24,7 @@ const BRANDS: Brand[] = [
 
 export default function MarcasSection() {
   return (
-    <section className="py-32 bg-white">
+    <section className="py-32 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
@@ -36,21 +36,21 @@ export default function MarcasSection() {
             Trabajo con diferentes empresas y marcas para generar contenido de calidad que llegue a una gran audiencia.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8">
           {BRANDS.map((brand) => (
             <motion.div
               key={brand.id}
               whileHover={{ y: -8 }}
               className="flex flex-col items-center text-center group cursor-pointer"
             >
-              <div className="bg-white rounded-2xl shadow-md p-6 w-full flex items-center justify-center h-[110px] transition group-hover:shadow-xl">
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 w-full flex items-center justify-center h-[140px] transition-all duration-300 group-hover:shadow-xl group-hover:border-pink-200 group-hover:shadow-pink-100">
                 <img
                   src={brand.logo}
                   alt={brand.name}
-                  className="max-h-14 object-contain transition"
+                  className="max-h-20 max-w-full object-contain grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
                 />
               </div>
-              <p className="mt-4 text-slate-700 font-medium">
+              <p className="mt-4 text-slate-700 font-medium text-sm sm:text-base">
                 {brand.name}
               </p>
             </motion.div>

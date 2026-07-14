@@ -1,5 +1,6 @@
 import { Eye, Heart, Share2, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import reelsData from "@/data/reels.json";
 
 interface Reel {
   id: string;
@@ -12,193 +13,24 @@ interface Reel {
 }
 
 const base = import.meta.env.BASE_URL;
-const SAMPLE_REELS: Reel[] = [
-  {
-    id: "1",
-    title: "Desayuno proteico",
-    description: "5 minutos y listo",
-    videoUrl: `${base}videos/video-1.mp4`,
-    views: 245000,
-    likes: 18500,
-    shares: 3200,
-  },
-  {
-    id: "2",
-    title: "Receta rápida",
-    description: "Bowl saludable",
-    videoUrl: `${base}videos/video-2.mp4`,
-    views: 512000,
-    likes: 42300,
-    shares: 7800,
-  },
-  {
-    id: "3",
-    title: "Tips nutrición",
-    description: "10 alimentos clave",
-    videoUrl: `${base}videos/video-3.mp4`,
-    views: 890000,
-    likes: 65200,
-    shares: 12100,
-  },
-  {
-    id: "4",
-    title: "Snacks saludables",
-    description: "Opciones bajas en calorías",
-    videoUrl: `${base}videos/video-4.mp4`,
-    views: 345000,
-    likes: 28900,
-    shares: 4500,
-  },
-  {
-    id: "5",
-    title: "Hidratación",
-    description: "Cuánta agua tomar",
-    videoUrl: `${base}videos/video-5.mp4`,
-    views: 178000,
-    likes: 14200,
-    shares: 2100,
-  },
-  {
-    id: "6",
-    title: "Rutina en casa",
-    description: "10 minutos fitness",
-    videoUrl: `${base}videos/video-6.mp4`,
-    views: 421000,
-    likes: 32100,
-    shares: 5900,
-  },
-  {
-    id: "7",
-    title: "Meal prep",
-    description: "Comidas de la semana",
-    videoUrl: `${base}videos/video-7.mp4`,
-    views: 368000,
-    likes: 28000,
-    shares: 4300,
-  },
-  {
-    id: "8",
-    title: "Receta saludable",
-    description: "Platos nutritivos y deliciosos",
-    videoUrl: `${base}videos/video-21.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-  {
-    id: "9",
-    title: "Nombre 9",
-    description: "description 9",
-    videoUrl: `${base}videos/video-9.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-/*   {
-    id: "10",
-    title: "Nombre 10",
-    description: "description 10",
-    videoUrl: `${base}videos/video-10.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  }, */
-  {
-    id: "10",
-    title: "Nombre 10",
-    description: "description 10",
-    videoUrl: `${base}videos/video-10.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-  {
-    id: "11",
-    title: "Nombre 11",
-    description: "description 11",
-    videoUrl: `${base}videos/video-11.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-  {
-    id: "12",
-    title: "Nombre 12",
-    description: "description 12",
-    videoUrl: `${base}videos/video-12.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-  {
-    id: "13",
-    title: "Shein",
-    description: "Ropa importada de calidad a precios accesibles",
-    videoUrl: `${base}videos/video-13.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-  {
-    id: "14",
-    title: "Titulo",
-    description: "Descripcion ejemplo",
-    videoUrl: `${base}videos/video-14.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-  {
-    id: "15",
-    title: "Titulo",
-    description: "Descripcion ejemplo",
-    videoUrl: `${base}videos/video-15.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-  {
-    id: "16",
-    title: "Titulo",
-    description: "Descripcion ejemplo",
-    videoUrl: `${base}videos/video-16.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-  {
-    id: "17",
-    title: "Titulo",
-    description: "Descripcion ejemplo",
-    videoUrl: `${base}videos/video-17.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-  {
-    id: "19",
-    title: "Titulo",
-    description: "Descripcion ejemplo",
-    videoUrl: `${base}videos/video-19.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-  {
-    id: "18",
-    title: "Titulo",
-    description: "Descripcion ejemplo ultimo",
-    videoUrl: `${base}videos/video-18.mp4`,
-    views: 295000,
-    likes: 22000,
-    shares: 4300,
-  },
-];
+const SAMPLE_REELS: Reel[] = reelsData.map((r) => ({
+  id: r.videoFile,
+  title: r.title,
+  description: r.description,
+  videoUrl: `${base}videos/${r.videoFile}`,
+  views: r.views,
+  likes: r.likes,
+  shares: r.shares,
+}));
+/* Datos de reels en client/data/reels.json — se sincroniza automáticamente
+   con los archivos de client/videos/ al correr `pnpm run reels:sync`
+   (o al hacer `pnpm dev` / `pnpm build`, que lo corren solos). */
 
 export default function ReelsSection() {
   const [selectedReel, setSelectedReel] = useState<Reel | null>(null);
 
-  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
+  const desktopVideoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
+  const mobileVideoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
   const mobileRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const formatNumber = (num: number) => {
@@ -208,22 +40,28 @@ export default function ReelsSection() {
   };
 
   const playVideo = (id: string) => {
-    videoRefs.current[id]?.play().catch(() => {});
+    desktopVideoRefs.current[id]?.play().catch(() => {});
   };
 
-  const isIOS =
-  /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-
   const stopVideo = (id: string) => {
-    const v = videoRefs.current[id];
+    const v = desktopVideoRefs.current[id];
     if (v) {
       v.pause();
       v.currentTime = 0;
     }
   };
 
-  // MOBILE autoplay solo del reel visible
+  const toggleMobileVideo = (id: string) => {
+    const v = mobileVideoRefs.current[id];
+    if (!v) return;
+    if (v.paused) {
+      v.play().catch(() => {});
+    } else {
+      v.pause();
+    }
+  };
+
+  // MOBILE autoplay solo del reel visible al pasar por arriba
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -232,7 +70,7 @@ export default function ReelsSection() {
 
           if (!id) return;
 
-          const video = videoRefs.current[id];
+          const video = mobileVideoRefs.current[id];
 
           if (entry.isIntersecting) {
             video?.play().catch(() => {});
@@ -294,10 +132,10 @@ export default function ReelsSection() {
               <div className="relative aspect-[9/16] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
 
                 <video
-                  ref={(el) => (videoRefs.current[reel.id] = el)}
+                  ref={(el) => (desktopVideoRefs.current[reel.id] = el)}
                   src={reel.videoUrl}
-                  /* muted */
-                  autoPlay
+                  muted
+                  playsInline
                   loop
                   className="w-full h-full object-cover"
                 />
@@ -350,16 +188,16 @@ export default function ReelsSection() {
               ref={(el) => (mobileRefs.current[reel.id] = el)}
               data-id={reel.id}
               className="snap-center min-w-[85%]"
+              onClick={() => toggleMobileVideo(reel.id)}
               // En mobile, no abrir modal
             >
               <div className="rounded-3xl overflow-hidden shadow-xl">
                  <video
-                  ref={(el) => (videoRefs.current[reel.id] = el)}
+                  ref={(el) => (mobileVideoRefs.current[reel.id] = el)}
                   src={reel.videoUrl}
-                  /* autoPlay={isIOS} */
-                  muted={isIOS}
+                  muted
                   loop
-                  playsInline={isIOS}
+                  playsInline
                   preload="metadata"
                   className="w-full aspect-[9/16] object-cover"
                 />

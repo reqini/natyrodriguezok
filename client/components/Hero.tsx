@@ -16,14 +16,16 @@ export default function Hero({ onViewReels, onContact }: HeroProps) {
 
       <div className="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center text-center">
         {/* Avatar */}
-        <div className="relative mb-4 group">
-          <div className="absolute inset-0 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:blur-md group-hover:bg-pink-100/40 z-0" />
-          <img
-            src="https://i.ibb.co/xS8BRvdq/foto-familiar-2.jpg"
-            alt="Natalia Rodriguez"
-            className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-white shadow-lg transition-all duration-300 group-hover:scale-110 relative z-10"
-            loading="lazy"
-          />
+        <div className="relative mb-6 group w-48 sm:w-64">
+          <div className="absolute inset-0 rounded-[2rem] blur-2xl bg-gradient-to-tr from-pink-400/50 via-orange-300/50 to-purple-400/50 scale-105 transition-all duration-300 group-hover:scale-110 group-hover:blur-3xl z-0" />
+          <div className="relative z-10 rounded-[2rem] p-[3px] bg-gradient-to-tr from-pink-500 via-orange-400 to-purple-500 shadow-2xl shadow-pink-300/40 transition-transform duration-300 group-hover:scale-[1.02]">
+            <img
+              src={`${import.meta.env.BASE_URL}images/foto-familiar-2.jpeg`}
+              alt="Natalia Rodriguez"
+              className="w-full aspect-[4/5] rounded-[1.75rem] object-cover border-4 border-white"
+              loading="lazy"
+            />
+          </div>
         </div>
         <div className="space-y-4 animate-fade-in">
           <span className="inline-block px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-semibold">
