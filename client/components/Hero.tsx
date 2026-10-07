@@ -1,9 +1,17 @@
-import { ChevronDown, ArrowRight } from "lucide-react";
+import social from "@/data/social.json";
 
 interface HeroProps {
   onViewReels: () => void;
   onContact: () => void;
 }
+
+const compact = (num: number) => {
+  if (num < 1000) return String(num);
+  const thousands = num / 1000;
+  return thousands >= 10
+    ? `${Math.floor(thousands)}K`
+    : `${(Math.floor(thousands * 10) / 10).toFixed(1).replace(/\.0$/, "")}K`;
+};
 
 export default function Hero({ onViewReels, onContact }: HeroProps) {
   return (
@@ -43,11 +51,15 @@ export default function Hero({ onViewReels, onContact }: HeroProps) {
         {/* Stats */}
         <div className="flex flex-wrap justify-center gap-4 py-6 w-full">
           <div className="flex-1 min-w-[90px] space-y-1">
-            <p className="text-xl sm:text-2xl font-bold text-gradient">116K</p>
+            <p className="text-xl sm:text-2xl font-bold text-gradient">
+              {compact(social.instagram.followers)}
+            </p>
             <p className="text-xs sm:text-sm text-slate-600">Seguidores IG</p>
           </div>
           <div className="flex-1 min-w-[90px] space-y-1">
-            <p className="text-xl sm:text-2xl font-bold text-gradient">4.8K</p>
+            <p className="text-xl sm:text-2xl font-bold text-gradient">
+              {compact(social.tiktok.followers)}
+            </p>
             <p className="text-xs sm:text-sm text-slate-600">Seguidores TikTok</p>
           </div>
           {/* <div className="flex-1 min-w-[90px] space-y-1">

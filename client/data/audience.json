@@ -1,0 +1,18 @@
+{
+  "ageGroups": [
+    { "label": "18-24", "percent": 10 },
+    { "label": "25-34", "percent": 14 },
+    { "label": "35-44", "percent": 36 },
+    { "label": "45+", "percent": 40 }
+  ],
+  "gender": [
+    { "label": "Mujeres", "percent": 93 },
+    { "label": "Hombres", "percent": 7 }
+  ],
+  "countries": [
+    { "label": "Argentina", "percent": 85 },
+    { "label": "Uruguay", "percent": 6 },
+    { "label": "España", "percent": 5 },
+    { "label": "Paraguay", "percent": 4 }
+  ]
+}

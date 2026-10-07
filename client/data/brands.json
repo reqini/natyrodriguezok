@@ -1,0 +1,18 @@
+[
+  { "id": "twistshake", "name": "Twistshake", "logo": "images/marca-1.jpeg" },
+  { "id": "minimoka", "name": "Minimoka", "logo": "images/marca-2.jpeg" },
+  { "id": "grupolar", "name": "Grupolar", "logo": "images/marca-3.jpeg" },
+  { "id": "rojeles-marcela", "name": "Los Rojeles de Marcela", "logo": "images/marca-4.jpeg" },
+  { "id": "union-ganadera", "name": "Union Ganadera", "logo": "images/marca-5.jpeg" },
+  { "id": "green-is-good", "name": "Green is Good", "logo": "images/marca-7.jpeg" },
+  { "id": "cosmica-raiz", "name": "Cosmica Raiz", "logo": "images/marca-8.jpeg" },
+  { "id": "mercado-libre", "name": "Mercado Libre", "logo": "images/marca-9.jpeg" },
+  { "id": "shein", "name": "Shein", "logo": "images/marca-10.jpeg" },
+  { "id": "mococo-kids", "name": "Mococo Kids", "logo": "images/marca-11.jpeg" },
+  { "id": "emirates-perfumes", "name": "Emirates Perfumes", "logo": "images/marca-12.jpg" },
+  { "id": "breaders", "name": "Breaders", "logo": "images/marca-13.jpg" },
+  { "id": "sedal", "name": "Sedal", "logo": "images/marca-sedal.png" },
+  { "id": "aurea", "name": "Aurea", "logo": "images/marca-aurea.png" },
+  { "id": "papel-y-fiesta", "name": "Papel y Fiesta", "logo": "images/marca-papelyfiesta.jpg" },
+  { "id": "camesa", "name": "Camesa", "logo": "images/marca-camesa.png" }
+]

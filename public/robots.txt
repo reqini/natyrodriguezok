@@ -43,5 +43,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /media-kit
 
 Sitemap: https://natyrodriguez.online/sitemap.xml
