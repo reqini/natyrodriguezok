@@ -1,24 +1,11 @@
 import { Users, BarChart2, Globe2 } from "lucide-react";
+import audience from "@/data/audience.json";
+import social from "@/data/social.json";
 
 export default function AudienceStatsSection() {
   const stats = {
-    totalFollowers: 122500,
-    ageGroups: [
-      { label: "18-24", percent: 10 },
-      { label: "25-34", percent: 14 },
-      { label: "35-44", percent: 36 },
-      { label: "45+", percent: 40 },
-    ],
-    gender: [
-      { label: "Mujeres", percent: 93 },
-      { label: "Hombres", percent: 7 },
-    ],
-    countries: [
-      { label: "Argentina", percent: 85 },
-      { label: "Uruguay", percent: 6 },
-      { label: "Paraguay", percent: 4 },
-      { label: "España", percent: 5 }
-    ],
+    totalFollowers: social.instagram.followers,
+    ...audience,
   };
 
 
@@ -102,7 +89,7 @@ export default function AudienceStatsSection() {
         {/* Total */}
         <div className="mt-12 text-center">
           <span className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full px-6 py-3 text-lg font-semibold shadow">
-            Seguidores: {stats.totalFollowers.toLocaleString()}k
+            Seguidores: {stats.totalFollowers.toLocaleString()}
           </span>
         </div>
       </div>

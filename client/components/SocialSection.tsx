@@ -1,4 +1,5 @@
-import { ExternalLink, Users, Instagram, MessageCircle, Youtube } from "lucide-react";
+import { ExternalLink, Users, Instagram, MessageCircle } from "lucide-react";
+import social from "@/data/social.json";
 
 interface SocialNetwork {
   id: string;
@@ -11,24 +12,26 @@ interface SocialNetwork {
   bgColor: string;
 }
 
+/* Los números salen de client/data/social.json. Instagram lo actualiza solo
+   el workflow sync-instagram.yml; el resto se edita desde /admin. */
 const SOCIAL_NETWORKS: SocialNetwork[] = [
   {
     id: "instagram",
     name: "Instagram",
-    handle: "@natyy.rodriguezok",
-    followers: 116000,
+    handle: social.instagram.handle,
+    followers: social.instagram.followers,
     icon: <Instagram className="w-8 h-8" />,
-    url: "https://instagram.com/natyy.rodriguezok",
+    url: social.instagram.url,
     color: "from-pink-500 to-orange-400",
     bgColor: "bg-gradient-to-br from-pink-50 to-orange-50",
   },
   {
     id: "tiktok",
     name: "TikTok",
-    handle: "@natyy.rodriguezok",
-    followers: 4800,
+    handle: social.tiktok.handle,
+    followers: social.tiktok.followers,
     icon: <MessageCircle className="w-8 h-8" />,
-    url: "https://tiktok.com/@natyy.rodriguezok",
+    url: social.tiktok.url,
     color: "from-black to-slate-600",
     bgColor: "bg-gradient-to-br from-slate-50 to-gray-100",
   },
@@ -36,7 +39,8 @@ const SOCIAL_NETWORKS: SocialNetwork[] = [
 
 const formatNumber = (num: number) => {
   if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
-  if (num >= 1000) return `${(num / 1000).toFixed(0)}K`;
+  if (num >= 10000) return `${Math.floor(num / 1000)}K`;
+  if (num >= 1000) return `${(Math.floor(num / 100) / 10).toString().replace(/\.0$/, "")}K`;
   return num.toString();
 };
 

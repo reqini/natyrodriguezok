@@ -1,0 +1,75 @@
+{
+  "role": "Creadora de contenido · Mamá de dos · Argentina",
+  "headline": "Maternidad real, sin filtro.",
+  "intro": "Comparto mi día a día como mamá: la casa, la cocina, los chicos y todo lo que de verdad nos funciona. Mi comunidad me sigue porque recomiendo como lo haría una amiga, no como una publicidad.",
+  "about": [
+    {
+      "title": "Qué hago",
+      "text": "Reels de familia, lifestyle y vida real. Recetas simples para el día a día, hallazgos para los chicos, moda infantil, hogar y los productos que uso en casa, contados con humor y sin guion."
+    },
+    {
+      "title": "A qué apunto",
+      "text": "Trabajar con marcas de familia, hogar, cocina, moda y bienestar que quieran llegar a mamás reales con contenido que se ve completo, se guarda y se compra."
+    },
+    {
+      "title": "Cómo lo hago",
+      "text": "Integro tu producto en una situación real de mi casa. Nada de spots: tu marca aparece donde la usaría cualquier mamá, y eso es lo que genera confianza."
+    }
+  ],
+  "pillars": [
+    "Maternidad",
+    "Familia",
+    "Cocina fácil",
+    "Hallazgos para chicos",
+    "Moda infantil",
+    "Hogar"
+  ],
+  "metrics": {
+    "periodLabel": "Últimos 30 días",
+    "updatedAt": "2026-10-07",
+    "views": 504656,
+    "reach": 235956,
+    "interactions": 23125,
+    "accountsEngaged": 14363,
+    "nonFollowerViewsPercent": 59.5,
+    "topReelViews": 104000
+  },
+  "rates": {
+    "currency": "ARS",
+    "reels": [
+      {
+        "label": "1 reel",
+        "price": 90500
+      },
+      {
+        "label": "Pack 3 reels",
+        "price": 238000
+      },
+      {
+        "label": "Pack 5 reels",
+        "price": 371000
+      }
+    ],
+    "stories": [
+      {
+        "label": "1 historia",
+        "price": 28500
+      },
+      {
+        "label": "2 historias",
+        "price": 47500
+      },
+      {
+        "label": "Pack 1 reel + 1 historia",
+        "price": 105000
+      }
+    ],
+    "notes": [
+      "Uso del contenido en ads: +20% (120 días)"
+    ]
+  },
+  "contact": {
+    "email": "natyyrodriguezok@gmail.com",
+    "website": "natyrodriguez.online"
+  }
+}

@@ -50,6 +50,14 @@ function startServer() {
   });
 }
 
+// GitHub Pages devuelve 404.html para cualquier ruta que no sea un archivo
+// real. Guardamos ahí el index.html sin prerenderizar para que rutas como
+// /admin carguen la SPA en vez de la pantalla de error.
+writeFileSync(
+  path.join(distDir, "404.html"),
+  await readFile(path.join(distDir, "index.html")),
+);
+
 const server = await startServer();
 const browser = await chromium.launch();
 const page = await browser.newPage();

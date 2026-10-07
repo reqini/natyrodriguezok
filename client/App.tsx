@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Index from "./pages/Index";
+import Admin from "./pages/Admin";
+import MediaKit from "./pages/MediaKit";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +18,8 @@ export default function App() {
         <Sonner />
         <BrowserRouter>
           <Routes>
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/media-kit" element={<MediaKit />} />
             <Route path="/*" element={<Index />} />
           </Routes>
         </BrowserRouter>

@@ -1,26 +1,38 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+import brandsData from "@/data/brands.json";
 
 interface Brand {
-  id: number;
+  id: string;
   name: string;
   logo: string;
 }
 
 const base = import.meta.env.BASE_URL;
-const BRANDS: Brand[] = [
-  { id: 1, name: "Twistshake", logo: `${base}images/marca-1.jpeg` },
-  { id: 2, name: "Minimoka", logo: `${base}images/marca-2.jpeg` },
-  { id: 3, name: "Grupolar", logo: `${base}images/marca-3.jpeg` },
-  { id: 4, name: "Los Rojeles de Marcela", logo: `${base}images/marca-4.jpeg` },
-  { id: 5, name: "Union Ganadera", logo: `${base}images/marca-5.jpeg` },
-  { id: 6, name: "Green is Good", logo: `${base}images/marca-7.jpeg` },
-  { id: 7, name: "Cosmica Raiz", logo: `${base}images/marca-8.jpeg` },
-  { id: 8, name: "Mercado Libre", logo: `${base}images/marca-9.jpeg` },
-  { id: 9, name: "Shein", logo: `${base}images/marca-10.jpeg` },
-  { id: 10, name: "Mococo Kids", logo: `${base}images/marca-11.jpeg` },
-  { id: 11, name: "Emirates Perfumes", logo: `${base}images/marca-12.jpg` },
-  { id: 12, name: "Breaders", logo: `${base}images/marca-13.jpg` },
-];
+const BRANDS: Brand[] = brandsData;
+
+/* Mientras no esté subido el archivo del logo, la tarjeta muestra el nombre
+   de la marca en vez de una imagen rota. */
+function BrandLogo({ brand }: { brand: Brand }) {
+  const [failed, setFailed] = useState(!brand.logo);
+
+  if (failed) {
+    return (
+      <span className="text-lg font-semibold text-slate-400 text-center px-2 leading-tight break-normal transition-colors duration-300 group-hover:text-slate-700">
+        {brand.name}
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={`${base}${brand.logo}`}
+      alt={brand.name}
+      onError={() => setFailed(true)}
+      className="max-h-20 max-w-full object-contain grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+    />
+  );
+}
 
 export default function MarcasSection() {
   return (
@@ -44,11 +56,7 @@ export default function MarcasSection() {
               className="flex flex-col items-center text-center group cursor-pointer"
             >
               <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 w-full flex items-center justify-center h-[140px] transition-all duration-300 group-hover:shadow-xl group-hover:border-pink-200 group-hover:shadow-pink-100">
-                <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="max-h-20 max-w-full object-contain grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
-                />
+                <BrandLogo brand={brand} />
               </div>
               <p className="mt-4 text-slate-700 font-medium text-sm sm:text-base">
                 {brand.name}
